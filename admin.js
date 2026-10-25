@@ -155,7 +155,8 @@ async function loadDonationsData() {
     tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">लोड हो रहा है...</td></tr>`;
 
     try {
-        const snapshot = await db.collection("donations").orderBy("timestamp", "desc").get();
+        // यहाँ orderBy हटा दिया गया है ताकि इंडेक्स की समस्या न आए
+        const snapshot = await db.collection("donations").get();
         tbody.innerHTML = "";
         
         if (snapshot.empty) {
@@ -165,7 +166,13 @@ async function loadDonationsData() {
 
         snapshot.forEach(doc => {
             const data = doc.data();
-            let dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('hi-IN') : "N/A";
+            // अगर टाइमस्टैम्प है तो दिखाएं, नहीं तो 'N/A'
+            let dateStr = "N/A";
+            if (data.timestamp) {
+                try {
+                    dateStr = data.timestamp.toDate().toLocaleDateString('hi-IN');
+                } catch(e) { console.log("Date error", e); }
+            }
             
             tbody.innerHTML += `
                 <tr class="border-b hover:bg-gray-50 transition">
@@ -187,20 +194,26 @@ async function loadDonationsData() {
 async function loadMessagesData() {
     const tbody = document.getElementById('messages-list');
     if (!tbody) return;
-    tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">लोड हो रहा है...</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">लोड हो रहा है...</td></tr>`;
 
     try {
-        const snapshot = await db.collection("messages").orderBy("timestamp", "desc").get();
+        // यहाँ भी orderBy हटा दिया गया है
+        const snapshot = await db.collection("messages").get();
         tbody.innerHTML = "";
         
         if (snapshot.empty) {
-            tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">कोई संदेश नहीं मिला।</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-gray-500">कोई संदेश नहीं मिला।</td></tr>`;
             return;
         }
 
         snapshot.forEach(doc => {
             const data = doc.data();
-            let dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('hi-IN') : "N/A";
+            let dateStr = "N/A";
+            if (data.timestamp) {
+                try {
+                    dateStr = data.timestamp.toDate().toLocaleDateString('hi-IN');
+                } catch(e) { console.log("Date error", e); }
+            }
             
             tbody.innerHTML += `
                 <tr class="border-b hover:bg-gray-50 transition">
@@ -215,6 +228,6 @@ async function loadMessagesData() {
             `;
         });
     } catch (error) {
-        tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-500">त्रुटि: ${error.message}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-red-500">त्रुटि: ${error.message}</td></tr>`;
     }
 }
