@@ -2,10 +2,9 @@
 // admin.js - एडमिन पैनल का पूरा लॉजिक
 // ==========================================
 
-// 1. एडमिन की ईमेल आईडी (यहाँ अपनी सही Gmail डालें)
-const ADMIN_EMAIL = "ngl.raj.in@gmail.com"; 
+const ADMIN_EMAIL = "ngl.raj.in@gmail.com"; // <--- यहाँ अपनी सही ईमेल डालें
 
-// 2. UI एलिमेंट्स को सेलेक्ट करना
+// UI एलिमेंट्स
 const loginSection = document.getElementById('login-section');
 const adminSection = document.getElementById('admin-section');
 const userEmailSpan = document.getElementById('user-email');
@@ -16,8 +15,11 @@ const loginMsg = document.getElementById('login-msg');
 // टैब्स
 const tabContentBtn = document.getElementById('tab-content');
 const tabDonationsBtn = document.getElementById('tab-donations');
+const tabMessagesBtn = document.getElementById('tab-messages');
+
 const contentTab = document.getElementById('content-tab');
 const donationsTab = document.getElementById('donations-tab');
+const messagesTab = document.getElementById('messages-tab');
 
 // फॉर्म और इनपुट्स
 const adminForm = document.getElementById('adminForm');
@@ -26,11 +28,10 @@ const contentInput = document.getElementById('contentInput');
 const saveMsg = document.getElementById('save-msg');
 
 // ==========================================
-// 3. लॉगिन और लॉगआउट लॉजिक
+// 1. लॉगिन और लॉगआउट लॉजिक
 // ==========================================
 if (loginBtn) {
     loginBtn.addEventListener('click', () => {
-        // Google पॉपअप खोलें
         const provider = new firebase.auth.GoogleAuthProvider();
         auth.signInWithPopup(provider).catch((error) => {
             console.error("Login Error:", error);
@@ -45,52 +46,63 @@ if (logoutBtn) {
     });
 }
 
-// ==========================================
-// 4. यूजर की स्थिति (Auth State) चेक करना
-// ==========================================
+// Auth State
 auth.onAuthStateChanged(async (user) => {
     if (user && user.email === ADMIN_EMAIL) {
-        // सही एडमिन लॉगिन है
         if (loginSection) loginSection.classList.add('hidden');
         if (adminSection) adminSection.classList.remove('hidden');
         if (userEmailSpan) userEmailSpan.innerText = "लॉगिन: " + user.email;
         
-        // डेटा लोड करें
         await loadContentData();
     } else {
-        // कोई लॉगिन नहीं है या गलत ईमेल है
         if (loginSection) loginSection.classList.remove('hidden');
         if (adminSection) adminSection.classList.add('hidden');
         
         if (user && user.email !== ADMIN_EMAIL) {
             if (loginMsg) loginMsg.innerText = "आपके पास एडमिन एक्सेस नहीं है!";
-            auth.signOut(); // गलत यूजर को बाहर निकाल दें
+            auth.signOut();
         }
     }
 });
 
 // ==========================================
-// 5. टैब स्विचिंग (कंटेंट और दान लिस्ट के बीच)
+// 2. टैब स्विचिंग (कंटेंट, दान और मैसेज)
 // ==========================================
-if (tabContentBtn && tabDonationsBtn) {
+function hideAllTabs() {
+    contentTab.classList.add('hidden');
+    donationsTab.classList.add('hidden');
+    messagesTab.classList.add('hidden');
+    
+    // टैब बटन का कलर रीसेट करें
+    tabContentBtn.className = "px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition";
+    tabDonationsBtn.className = "px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition";
+    tabMessagesBtn.className = "px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition";
+}
+
+if (tabContentBtn) {
     tabContentBtn.addEventListener('click', () => {
+        hideAllTabs();
         contentTab.classList.remove('hidden');
-        donationsTab.classList.add('hidden');
         tabContentBtn.className = "px-6 py-3 font-bold text-orange-600 border-b-2 border-orange-600 transition";
-        tabDonationsBtn.className = "px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition";
     });
 
     tabDonationsBtn.addEventListener('click', () => {
-        contentTab.classList.add('hidden');
+        hideAllTabs();
         donationsTab.classList.remove('hidden');
         tabDonationsBtn.className = "px-6 py-3 font-bold text-orange-600 border-b-2 border-orange-600 transition";
-        tabContentBtn.className = "px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition";
-        loadDonationsData(); // दान लिस्ट लोड करें
+        loadDonationsData();
+    });
+
+    tabMessagesBtn.addEventListener('click', () => {
+        hideAllTabs();
+        messagesTab.classList.remove('hidden');
+        tabMessagesBtn.className = "px-6 py-3 font-bold text-orange-600 border-b-2 border-orange-600 transition";
+        loadMessagesData();
     });
 }
 
 // ==========================================
-// 6. कंटेंट लोड करना (Firestore से)
+// 3. कंटेंट लोड और सेव करना
 // ==========================================
 async function loadContentData() {
     try {
@@ -105,13 +117,9 @@ async function loadContentData() {
     }
 }
 
-// ==========================================
-// 7. कंटेंट सेव करना (Firestore में)
-// ==========================================
 if (adminForm) {
     adminForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         if (saveMsg) {
             saveMsg.innerText = "सेव हो रहा है...";
             saveMsg.className = "font-bold mt-4 text-center text-blue-600";
@@ -130,7 +138,6 @@ if (adminForm) {
                 setTimeout(() => { saveMsg.innerText = ""; }, 3000);
             }
         } catch (error) {
-            console.error("Error saving content: ", error);
             if (saveMsg) {
                 saveMsg.innerText = "❌ त्रुटि: " + error.message;
                 saveMsg.className = "font-bold mt-4 text-center text-red-600";
@@ -140,52 +147,74 @@ if (adminForm) {
 }
 
 // ==========================================
-// 8. दान की लिस्ट लोड करना (Firestore से)
+// 4. दान की लिस्ट लोड करना
 // ==========================================
 async function loadDonationsData() {
     const tbody = document.getElementById('donations-list');
     if (!tbody) return;
-
     tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">लोड हो रहा है...</td></tr>`;
 
     try {
-        // टाइमस्टैम्प के हिसाब से नए दान सबसे ऊपर (descending order)
         const snapshot = await db.collection("donations").orderBy("timestamp", "desc").get();
-        
         tbody.innerHTML = "";
         
         if (snapshot.empty) {
-            tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">अभी तक कोई दान नहीं आया है।</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">कोई दान नहीं मिला।</td></tr>`;
             return;
         }
 
-        // लूप चलाकर सारे दान दिखाएं
         snapshot.forEach(doc => {
             const data = doc.data();
+            let dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('hi-IN') : "N/A";
             
-            // तारीख फॉर्मेट करें
-            let dateStr = "अभी-अभी";
-            if (data.timestamp) {
-                dateStr = data.timestamp.toDate().toLocaleDateString('hi-IN', {
-                    year: 'numeric', month: 'short', day: 'numeric',
-                    hour: '2-digit', minute: '2-digit'
-                });
-            }
-            
-            // टेबल रो बनाएं
-            const tr = document.createElement('tr');
-            tr.className = "border-b border-gray-100 hover:bg-gray-50 transition";
-            tr.innerHTML = `
-                <td class="p-4 text-sm text-gray-600">${dateStr}</td>
-                <td class="p-4 font-bold text-gray-800">${data.name}</td>
-                <td class="p-4 font-bold text-green-600">₹${data.amount}</td>
-                <td class="p-4 text-sm text-gray-500">${data.message || '-'}</td>
+            tbody.innerHTML += `
+                <tr class="border-b hover:bg-gray-50 transition">
+                    <td class="p-4 text-sm text-gray-600">${dateStr}</td>
+                    <td class="p-4 font-bold text-gray-800">${data.name}</td>
+                    <td class="p-4 font-bold text-green-600">₹${data.amount}</td>
+                    <td class="p-4 text-sm text-gray-500">${data.message || '-'}</td>
+                </tr>
             `;
-            tbody.appendChild(tr);
         });
-
     } catch (error) {
-        console.error("Error loading donations: ", error);
-        tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-500">डेटा लोड करने में त्रुटि: ${error.message}</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-500">त्रुटि: ${error.message}</td></tr>`;
+    }
+}
+
+// ==========================================
+// 5. संपर्क संदेश (Messages) लोड करना
+// ==========================================
+async function loadMessagesData() {
+    const tbody = document.getElementById('messages-list');
+    if (!tbody) return;
+    tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">लोड हो रहा है...</td></tr>`;
+
+    try {
+        const snapshot = await db.collection("messages").orderBy("timestamp", "desc").get();
+        tbody.innerHTML = "";
+        
+        if (snapshot.empty) {
+            tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-500">कोई संदेश नहीं मिला।</td></tr>`;
+            return;
+        }
+
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            let dateStr = data.timestamp ? data.timestamp.toDate().toLocaleDateString('hi-IN') : "N/A";
+            
+            tbody.innerHTML += `
+                <tr class="border-b hover:bg-gray-50 transition">
+                    <td class="p-4 text-sm text-gray-600">${dateStr}</td>
+                    <td class="p-4">
+                        <div class="font-bold text-gray-800">${data.name}</div>
+                        <div class="text-xs text-blue-600">${data.phone}</div>
+                        <div class="text-xs text-gray-500">${data.email || '-'}</div>
+                    </td>
+                    <td class="p-4 text-sm text-gray-700">${data.message}</td>
+                </tr>
+            `;
+        });
+    } catch (error) {
+        tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-500">त्रुटि: ${error.message}</td></tr>`;
     }
 }
