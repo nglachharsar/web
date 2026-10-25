@@ -1,18 +1,36 @@
+/* ==========================================
+   गूगल फॉन्ट्स (हिंदी और अंग्रेजी के लिए)
+   ========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap');
 
-body { font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; margin: 0; padding: 0; overflow-x: hidden; }
-
-:root {
-    --bg-dark: #0f172a;          
-    --bg-card: #1e293b;          
-    --primary-gold: #f59e0b;     
-    --accent-orange: #ea580c;    
-    --text-light: #f8fafc;       
-    --text-muted: #cbd5e1;       
-    --border-color: #334155;     
+/* ==========================================
+   ग्लोबल रीसेट और बेसिक स्टाइल
+   ========================================== */
+body { 
+    font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    overflow-x: hidden;
+    background-color: #0f172a;
+    color: #f8fafc;
 }
 
-body { background-color: var(--bg-dark); color: var(--text-light); }
+/* ==========================================
+   कलर पैलेट (CSS Variables)
+   ========================================== */
+:root {
+    --bg-dark: #0f172a;          /* मुख्य डार्क बैकग्राउंड */
+    --bg-card: #1e293b;          /* कार्ड का बैकग्राउंड */
+    --primary-gold: #f59e0b;     /* गोल्डन कलर (टेक्स्ट/हाईलाइट) */
+    --accent-orange: #ea580c;    /* केसरिया (दान बटन) */
+    --text-light: #f8fafc;       /* सफेद टेक्स्ट */
+    --text-muted: #cbd5e1;       /* हल्का ग्रे टेक्स्ट */
+    --border-color: #334155;     /* बॉर्डर का रंग */
+}
+
+/* ==========================================
+   यूटिलिटी क्लासेज
+   ========================================== */
 .bg-main { background-color: var(--bg-dark); }
 .bg-card { background-color: var(--bg-card); }
 .text-gold { color: var(--primary-gold); }
@@ -20,27 +38,184 @@ body { background-color: var(--bg-dark); color: var(--text-light); }
 .bg-accent { background-color: var(--accent-orange); }
 .border-custom { border-color: var(--border-color); }
 
+/* ==========================================
+   हीरो सेक्शन (Hero Banner)
+   ========================================== */
 .hero-bg {
     background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), url('hero-bg.jpg'); 
-    background-size: cover; background-position: center; background-attachment: fixed;
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed;
+    background-color: var(--bg-card); /* अगर फोटो न हो तो यह रंग दिखेगा */
 }
 
-/* Page Loader */
-#page-loader { position: fixed; inset: 0; background: #0f172a; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.5s ease; }
-.loader-spinner { width: 50px; height: 50px; border: 4px solid #f59e0b; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
+/* ==========================================
+   पेज लोडर (Page Loader)
+   ========================================== */
+#page-loader { 
+    position: fixed; 
+    inset: 0; 
+    background: var(--bg-dark); 
+    z-index: 9999; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    transition: opacity 0.5s ease; 
+}
 
-/* Notice Popup */
-#notice-popup { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; width: 90%; max-width: 500px; background-color: var(--bg-card); border: 2px solid var(--primary-gold); box-shadow: 0 20px 50px rgba(0,0,0,0.8); display: none; border-radius: 16px; }
-#notice-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999; display: none; backdrop-filter: blur(4px); }
-#notice-minimized { position: fixed; bottom: 30px; right: 30px; z-index: 1000; display: none; animation: ring 2s infinite; border-radius: 50%; box-shadow: 0 4px 15px rgba(234, 88, 12, 0.5); }
-@keyframes ring { 0% { transform: rotate(0); } 10% { transform: rotate(15deg); } 20% { transform: rotate(-15deg); } 30% { transform: rotate(10deg); } 40% { transform: rotate(-10deg); } 50% { transform: rotate(0); } 100% { transform: rotate(0); } }
+.loader-spinner { 
+    width: 50px; 
+    height: 50px; 
+    border: 4px solid var(--primary-gold); 
+    border-top-color: transparent; 
+    border-radius: 50%; 
+    animation: spin 1s linear infinite; 
+}
 
-/* Social Icons */
-.social-icon { width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: all 0.3s ease; background-color: #1e293b; border: 1px solid #334155; }
-.social-icon:hover { transform: translateY(-5px) scale(1.15); }
-.social-icon.insta:hover { box-shadow: 0 0 15px rgba(225, 48, 108, 0.6); border-color: #E1306C; }
-.social-icon.x-twitter:hover { box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); border-color: #fff; }
-.social-icon.facebook:hover { box-shadow: 0 0 15px rgba(24, 119, 242, 0.6); border-color: #1877F2; }
-.social-icon.youtube:hover { box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); border-color: #FF0000; }
-.social-icon.whatsapp:hover { box-shadow: 0 0 15px rgba(37, 211, 102, 0.6); border-color: #25D366; }
+@keyframes spin { 
+    to { transform: rotate(360deg); } 
+}
+
+/* ==========================================
+   नोटिस पॉपअप (Notice Popup)
+   ========================================== */
+#notice-popup { 
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1000; 
+    width: 90%; 
+    max-width: 500px; 
+    background-color: var(--bg-card); 
+    border: 2px solid var(--primary-gold); 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
+    display: none; 
+    border-radius: 16px; 
+}
+
+#notice-overlay { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.8); 
+    z-index: 999; 
+    display: none; 
+    backdrop-filter: blur(4px); 
+}
+
+#notice-minimized { 
+    position: fixed; 
+    bottom: 30px; 
+    right: 30px; 
+    z-index: 1000; 
+    display: none; 
+    animation: ring 2s infinite; 
+    border-radius: 50%; 
+    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.5); 
+}
+
+@keyframes ring { 
+    0% { transform: rotate(0); } 
+    10% { transform: rotate(15deg); } 
+    20% { transform: rotate(-15deg); } 
+    30% { transform: rotate(10deg); } 
+    40% { transform: rotate(-10deg); } 
+    50% { transform: rotate(0); } 
+    100% { transform: rotate(0); } 
+}
+
+/* ==========================================
+   सोशल मीडिया आइकन्स (Social Icons)
+   ========================================== */
+.social-icon { 
+    width: 45px; 
+    height: 45px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%; 
+    transition: all 0.3s ease; 
+    background-color: var(--bg-card); 
+    border: 1px solid var(--border-color); 
+    color: white;
+}
+
+.social-icon:hover { 
+    transform: translateY(-5px) scale(1.15); 
+}
+
+.social-icon.insta:hover { 
+    box-shadow: 0 0 15px rgba(225, 48, 108, 0.6); 
+    border-color: #E1306C; 
+}
+
+.social-icon.x-twitter:hover { 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
+    border-color: #fff; 
+}
+
+.social-icon.facebook:hover { 
+    box-shadow: 0 0 15px rgba(24, 119, 242, 0.6); 
+    border-color: #1877F2; 
+}
+
+.social-icon.youtube:hover { 
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); 
+    border-color: #FF0000; 
+}
+
+.social-icon.linkedin:hover { 
+    box-shadow: 0 0 15px rgba(10, 102, 194, 0.6); 
+    border-color: #0A66C2; 
+}
+
+.social-icon.threads:hover { 
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4); 
+    border-color: #fff; 
+}
+
+.social-icon.whatsapp:hover { 
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.6); 
+    border-color: #25D366; 
+}
+
+/* ==========================================
+   कस्टम स्क्रॉलबार (Custom Scrollbar)
+   ========================================== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-gold);
+}
+
+/* ==========================================
+   एडमिन पैनल के लिए टेबल (Table) स्टाइल
+   ========================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--bg-card);
+    color: var(--primary-gold);
+    font-weight: 600;
+}

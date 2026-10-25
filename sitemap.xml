@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    
+    <!-- होम पेज (सबसे ज्यादा प्राथमिकता) -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- दान पेज -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/donate.html</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- हमारे बारे में -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/about.html</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- हम क्या करते हैं -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/what-we-do.html</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- गैलरी -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/gallery.html</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- संपर्क पेज -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/contact.html</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- प्राइवेसी पॉलिसी -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/privacy.html</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <!-- नियम एवं शर्तें -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/terms.html</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <!-- डिस्क्लेमर -->
+    <url>
+        <loc>https://www.ngssl.mywire.org/disclaimer.html</loc>
+        <lastmod>2025-10-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+</urlset>

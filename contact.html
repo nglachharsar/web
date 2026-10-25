@@ -3,54 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>संपर्क करें - नंदी गौशाला</title>
+    <title>संपर्क करें - नंदी गौशाला लछारसर</title>
+    <meta name="description" content="नंदी गौशाला, लछारसर से संपर्क करें। पता, फोन नंबर, ईमेल और गूगल मैप्स की जानकारी।">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased bg-main text-light">
-    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="ngl.svg" alt="Logo" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
-                <h1 class="text-2xl font-bold text-gold">नंदी गौशाला, लछारसर</h1>
-            </a>
-            <nav class="hidden md:flex items-center gap-6 text-base font-semibold text-white">
-                <a href="index.html" class="hover:text-gold transition">होम</a>
-                <a href="about.html" class="hover:text-gold transition">हमारे बारे में</a>
-                <a href="gallery.html" class="hover:text-gold transition">गैलरी</a>
-                <a href="contact.html" class="hover:text-gold transition text-gold">संपर्क</a>
-            </nav>
-            <a href="donate.html" class="bg-accent text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 transition">दान करें 🙏</a>
-        </div>
-    </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-16">
-        <h2 class="text-4xl font-bold text-gold mb-8 text-center">संपर्क करें</h2>
+    <!-- ================= HEADER LOADER ================= -->
+    <div id="header-container"></div>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
         
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-card p-8 rounded-2xl border border-custom space-y-6">
-                <h3 class="text-2xl font-bold text-white mb-4">पता एवं विवरण</h3>
-                <p class="flex items-start gap-4"><i class="fas fa-map-marker-alt text-gold mt-1"></i> <span>नंदी गौशाला परिसर, ग्राम - लछारसर, तहसील - रतनगढ़, जिला - चूरू (राजस्थान) - 331802</span></p>
-                <p class="flex items-center gap-4"><i class="fas fa-phone text-gold"></i> <a href="tel:9216626445" class="hover:underline">+91 92166 26445</a></p>
-                <p class="flex items-center gap-4"><i class="fas fa-envelope text-gold"></i> <a href="mailto:info@ngss.mywire.org" class="hover:underline">info@ngss.mywire.org</a></p>
-                <p class="flex items-center gap-4"><i class="fab fa-whatsapp text-green-500 text-xl"></i> <a href="https://wa.me/919216626445" target="_blank" class="hover:underline">WhatsApp पर चैट करें</a></p>
-            </div>
+        <!-- Page Title -->
+        <div class="text-center mb-16">
+            <span class="bg-white/10 border border-gold/30 text-gold px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">संपर्क सूत्र</span>
+            <h1 class="text-4xl sm:text-5xl font-bold text-gold mt-4 mb-4">हमसे जुड़ें</h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">यदि आप कोई दान करना चाहते हैं, गौ गोद लेना चाहते हैं या कोई सवाल पूछना चाहते हैं, तो बेझिझक हमसे संपर्क करें।</p>
+        </div>
+
+        <!-- Contact Details & Form Grid -->
+        <div class="grid lg:grid-cols-2 gap-12 mb-16">
             
-            <div class="bg-card p-8 rounded-2xl border border-custom">
-                <h3 class="text-2xl font-bold text-white mb-4">हमें संदेश भेजें</h3>
-                <form class="space-y-4">
-                    <input type="text" placeholder="आपका नाम" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold">
-                    <input type="tel" placeholder="मोबाइल नंबर" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold">
-                    <textarea rows="4" placeholder="आपका संदेश" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold"></textarea>
-                    <button type="button" class="w-full bg-gold text-gray-900 font-bold py-3 rounded-lg hover:bg-yellow-500 transition">संदेश भेजें</button>
+            <!-- Left Column: Contact Info -->
+            <div class="space-y-8">
+                <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
+                    <h2 class="text-2xl font-bold text-white mb-6 border-b border-gray-700 pb-3">संपर्क विवरण</h2>
+                    
+                    <div class="space-y-6">
+                        <!-- Address -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gray-800 p-3 rounded-full text-gold mt-1">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">पता</h4>
+                                <p class="text-gray-400 leading-relaxed mt-1">नंदी गौशाला परिसर, ग्राम - लछारसर, तहसील - रतनगढ़, जिला - चूरू, राजस्थान (पिन - 331802)</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gray-800 p-3 rounded-full text-gold mt-1">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">फोन नंबर</h4>
+                                <p class="text-gray-400 mt-1"><a href="tel:+919216626445" class="hover:text-gold transition">+91 92166 26445</a></p>
+                                <p class="text-gray-400"><a href="sms:+919216626445" class="hover:text-gold transition">SMS भेजने के लिए क्लिक करें</a></p>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gray-800 p-3 rounded-full text-gold mt-1">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">ईमेल आईडी</h4>
+                                <p class="text-gray-400 mt-1"><a href="mailto:info@ngss.mywire.org" class="hover:text-gold transition">info@ngss.mywire.org</a></p>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="flex items-start gap-4">
+                            <div class="bg-green-500/20 p-3 rounded-full text-green-500 mt-1">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">व्हाट्सएप ग्रुप</h4>
+                                <p class="text-gray-400 mt-1"><a href="https://chat.whatsapp.com/EMFhcIT2Q9F4qT4dLbeI2X" target="_blank" class="hover:text-green-500 transition">ग्रुप जॉइन करने के लिए क्लिक करें</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Contact Form -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-gray-700 pb-3">हमें संदेश भेजें</h2>
+                
+                <form id="contactForm" class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">आपका पूरा नाम *</label>
+                        <input type="text" id="contactName" required placeholder="जैसे: राहुल शर्मा" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold transition">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">मोबाइल नंबर *</label>
+                        <input type="tel" id="contactPhone" required placeholder="जैसे: 9876543210" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">ईमेल (वैकल्पिक)</label>
+                        <input type="email" id="contactEmail" placeholder="जैसे: rahul@example.com" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-300 mb-2">आपका संदेश *</label>
+                        <textarea id="contactMessage" required rows="4" placeholder="आप क्या कहना चाहते हैं?" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gold text-gray-900 font-bold py-3 rounded-lg hover:bg-yellow-500 transition shadow-lg text-lg flex justify-center items-center gap-2">
+                        <i class="fas fa-paper-plane"></i> संदेश भेजें
+                    </button>
                 </form>
+                <p id="contactStatus" class="text-center font-bold mt-4 hidden"></p>
+            </div>
+        </div>
+
+        <!-- Google Maps Section -->
+        <div class="bg-card p-4 rounded-2xl border border-custom shadow-lg mb-16">
+            <h2 class="text-2xl font-bold text-gold mb-4 text-center">हमारा पता (Google Maps)</h2>
+            <div class="w-full h-96 rounded-xl overflow-hidden border-2 border-gray-700">
+                <!-- Note: यहाँ गूगल मैप्स का iframe है -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14142.498603179605!2d74.58158375!3d28.05486595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3914622222222223%3A0x0!2sLachharsar%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1610000000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
             </div>
         </div>
     </main>
 
-    <footer class="bg-gray-950 text-gray-400 py-6 text-center border-t border-gray-800 mt-10">
-        <p>© 2026 नंदी गौशाला, लछारसर</p>
-    </footer>
+    <!-- ================= FOOTER LOADER ================= -->
+    <div id="footer-container"></div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+
+    <!-- Contact Form Logic (Inline Script) -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const status = document.getElementById('contactStatus');
+            status.innerText = "संदेश भेजा जा रहा है...";
+            status.className = "text-center font-bold mt-4 text-blue-400 block";
+
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const email = document.getElementById('contactEmail').value;
+            const message = document.getElementById('contactMessage').value;
+
+            // Save message to Firestore (New Collection: messages)
+            db.collection('messages').add({
+                name: name,
+                phone: phone,
+                email: email,
+                message: message,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(() => {
+                status.innerText = "✅ आपका संदेश सफलतापूर्वक भेज दिया गया है! हम जल्द संपर्क करेंगे।";
+                status.className = "text-center font-bold mt-4 text-green-500 block";
+                document.getElementById('contactForm').reset();
+            }).catch((error) => {
+                status.innerText = "❌ त्रुटि: " + error.message;
+                status.className = "text-center font-bold mt-4 text-red-500 block";
+            });
+        });
+    </script>
 </body>
 </html>

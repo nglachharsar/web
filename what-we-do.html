@@ -4,83 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>हम क्या करते हैं - नंदी गौशाला लछारसर</title>
+    <meta name="description" content="नंदी गौशाला, लछारसर में किए जाने वाले सेवा कार्य। उत्तम चारा, चिकित्सा, आश्रय और जैविक खाद।">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased bg-main text-light">
 
-    <!-- Page Loader -->
-    <div id="page-loader" style="display: none;">
-        <div class="loader-spinner"></div>
-        <p class="mt-4 text-gold font-bold text-xl animate-pulse">लोड हो रहा है...</p>
-    </div>
+    <!-- ================= HEADER LOADER ================= -->
+    <div id="header-container"></div>
 
-    <!-- Header -->
-    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="ngl.svg" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
-                <div>
-                    <h1 class="text-2xl font-bold text-gold leading-tight">नंदी गौशाला, लछारसर</h1>
-                    <p class="text-sm text-muted font-medium">रतनगढ़, चूरू (राजस्थान)</p>
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        
+        <!-- Page Title -->
+        <div class="text-center mb-16">
+            <span class="bg-white/10 border border-gold/30 text-gold px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">हमारे कार्य</span>
+            <h1 class="text-4xl sm:text-5xl font-bold text-gold mt-4 mb-4">हम क्या करते हैं?</h1>
+            <p class="text-gray-400 text-lg max-w-3xl mx-auto">
+                नंदी गौशाला सिर्फ एक आश्रय स्थल नहीं है, बल्कि यह गौ सेवा, पर्यावरण संरक्षण और किसानों के उत्थान का एक बड़ा माध्यम है। यहाँ हमारे प्रमुख कार्यों की जानकारी दी गई है।
+            </p>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid md:grid-cols-2 gap-10 mb-16">
+            
+            <!-- Service 1: Fodder -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg hover:border-gold transition duration-300 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gray-800 h-16 w-16 rounded-full flex items-center justify-center text-3xl text-gold group-hover:scale-110 transition">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white">उत्तम चारा व्यवस्था</h2>
                 </div>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    नंदी महाराज के स्वास्थ्य के लिए हम दैनिक रूप से पौष्टिक हरा चारा, सूखा चारा (कतरब) और संतुलित आहार की व्यवस्था करते हैं। उनके भोजन में किसी भी तरह की कमी न आए, इसका पूरा ध्यान रखा जाता है।
+                </p>
+            </div>
+
+            <!-- Service 2: Medical -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg hover:border-gold transition duration-300 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gray-800 h-16 w-16 rounded-full flex items-center justify-center text-3xl text-gold group-hover:scale-110 transition">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white">निःशुल्क चिकित्सा</h2>
+                </div>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    सड़कों पर घायल, बीमार या वृद्ध पशुओं के लिए गौशाला में प्राथमिक उपचार की सुविधा है। हम समय-समय पर पशु चिकित्सकों (Veterinarians) को बुलाकर सभी गौवंश का स्वास्थ्य परीक्षण करवाते हैं और आवश्यक दवाइयाँ उपलब्ध कराते हैं।
+                </p>
+            </div>
+
+            <!-- Service 3: Shelter -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg hover:border-gold transition duration-300 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gray-800 h-16 w-16 rounded-full flex items-center justify-center text-3xl text-gold group-hover:scale-110 transition">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white">सुरक्षित आश्रय</h2>
+                </div>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    राजस्थान की कड़कती ठंड, तेज धूप और आंधी से बचाने के लिए हमने विशाल, हवादार और मजबूत शेड का निर्माण किया है। यहाँ पशुओं के लिए खुले में घूमने और आराम करने के लिए पर्याप्त जगह है।
+                </p>
+            </div>
+
+            <!-- Service 4: Organic Manure -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg hover:border-gold transition duration-300 group">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gray-800 h-16 w-16 rounded-full flex items-center justify-center text-3xl text-gold group-hover:scale-110 transition">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white">जैविक खाद उत्पादन</h2>
+                </div>
+                <p class="text-gray-300 leading-relaxed text-lg">
+                    गोबर और गोमूत्र से हम उच्च गुणवत्ता वाली जैविक खाद तैयार करते हैं। इस खाद को स्थानीय किसानों को सस्ती दर पर उपलब्ध कराया जाता है, जिससे रासायनिक खाद का उपयोग कम हो और पर्यावरण सुरक्षित रहे।
+                </p>
+            </div>
+        </div>
+
+        <!-- Impact Section (आंकड़े) -->
+        <div class="bg-gray-900 border border-gray-800 rounded-3xl p-8 md:p-12 mb-16 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 opacity-5 text-9xl m-4"><i class="fas fa-cow"></i></div>
+            <h2 class="text-3xl font-bold text-gold mb-8 text-center relative z-10">हमारी सेवा का प्रभाव</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center relative z-10">
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h3 class="text-4xl font-bold text-white mb-2">100+</h3>
+                    <p class="text-gold font-medium">नंदी महाराज</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h3 class="text-4xl font-bold text-white mb-2">5000+</h3>
+                    <p class="text-gold font-medium">किलो चारा (मासिक)</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h3 class="text-4xl font-bold text-white mb-2">24/7</h3>
+                    <p class="text-gold font-medium">सुरक्षा और देखभाल</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h3 class="text-4xl font-bold text-white mb-2">50+</h3>
+                    <p class="text-gold font-medium">सक्रिय स्वयंसेवक</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center">
+            <h2 class="text-3xl font-bold text-white mb-6">इस पुण्य कार्य में हमारा साथ दें</h2>
+            <p class="text-gray-400 mb-8 max-w-xl mx-auto">आप भी अपने जन्मदिन, विवाह वर्षगांठ या पूर्वजों की स्मृति में गौ सेवा कर सकते हैं।</p>
+            <a href="donate.html" class="inline-block bg-accent text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-orange-700 transition shadow-lg hover:-translate-y-1">
+                <i class="fas fa-hand-holding-heart mr-2"></i> अभी दान करें
             </a>
-            <nav class="hidden md:flex items-center gap-6 font-semibold text-white">
-                <a href="index.html" class="hover:text-gold transition">होम</a>
-                <a href="about.html" class="hover:text-gold transition">हमारे बारे में</a>
-                <a href="gallery.html" class="hover:text-gold transition">गैलरी</a>
-                <a href="contact.html" class="hover:text-gold transition">संपर्क</a>
-            </nav>
-            <a href="donate.html" class="bg-accent text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 shadow-lg transition">दान करें 🙏</a>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 py-16">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gold mb-4">हम क्या करते हैं</h2>
-            <p class="text-gray-400 text-lg">गौ सेवा के हमारे प्रमुख कार्य</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Service 1 -->
-            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
-                <div class="text-5xl mb-4">🚜</div>
-                <h3 class="text-2xl font-bold text-gold mb-3">उत्तम चारा व्यवस्था</h3>
-                <p class="text-gray-300 leading-relaxed">हम नंदी महाराज के लिए दैनिक रूप से पौष्टिक हरा चारा, सूखा चारा (कतरब) और संतुलित आहार की व्यवस्था करते हैं। उनके स्वास्थ्य के लिए उच्च गुणवत्ता वाला चारा सुनिश्चित किया जाता है।</p>
-            </div>
-            <!-- Service 2 -->
-            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
-                <div class="text-5xl mb-4">🩺</div>
-                <h3 class="text-2xl font-bold text-gold mb-3">निःशुल्क चिकित्सा</h3>
-                <p class="text-gray-300 leading-relaxed">गौशाला में घायल, बीमार या वृद्ध पशुओं के लिए प्राथमिक उपचार और पशु चिकित्सकों की नियमित जाँच की सुविधा है। हम उन्हें स्वस्थ होने तक विशेष देखभाल प्रदान करते हैं।</p>
-            </div>
-            <!-- Service 3 -->
-            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
-                <div class="text-5xl mb-4">🏗️</div>
-                <h3 class="text-2xl font-bold text-gold mb-3">सुरक्षित आश्रय</h3>
-                <p class="text-gray-300 leading-relaxed">राजस्थान की कड़कती ठंड, तेज धूप और आंधी से बचाने के लिए हमने मजबूत और हवादार शेड का निर्माण किया है। यहाँ पशुओं के लिए खुला घूमने की जगह भी है।</p>
-            </div>
-            <!-- Service 4 -->
-            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
-                <div class="text-5xl mb-4">🌱</div>
-                <h3 class="text-2xl font-bold text-gold mb-3">जैविक खाद उत्पादन</h3>
-                <p class="text-gray-300 leading-relaxed">हम गोबर से जैविक खाद तैयार करते हैं और इसे स्थानीय किसानों को सस्ती दर पर उपलब्ध कराते हैं। इससे रासायनिक खाद का उपयोग कम होता है और पर्यावरण को लाभ मिलता है।</p>
-            </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-xl font-bold text-gold mb-2">गावो विश्वस्य मातरः</p>
-            <p class="text-sm text-gray-500">© 2026 नंदी गौशाला, लछारसर — सर्वाधिकार सुरक्षित</p>
-        </div>
-    </footer>
+    <!-- ================= FOOTER LOADER ================= -->
+    <div id="footer-container"></div>
 
+    <!-- ================= SCRIPTS ================= -->
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <script src="script.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
 </body>
 </html>

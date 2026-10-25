@@ -4,98 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>डिस्क्लेमर (अस्वीकरण) - नंदी गौशाला लछारसर</title>
+    <meta name="description" content="नंदी गौशाला की वेबसाइट का डिस्क्लेमर। जानें कि वेबसाइट पर दी गई जानकारी और दान से जुड़ी शर्तें क्या हैं।">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased bg-main text-light">
 
-    <!-- Page Loader -->
-    <div id="page-loader" style="display: none;">
-        <div class="loader-spinner"></div>
-        <p class="mt-4 text-gold font-bold text-xl animate-pulse">लोड हो रहा है...</p>
-    </div>
+    <!-- ================= HEADER LOADER ================= -->
+    <div id="header-container"></div>
 
-    <!-- Header -->
-    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="ngl.svg" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
-                <div>
-                    <h1 class="text-2xl font-bold text-gold leading-tight">नंदी गौशाला, लछारसर</h1>
-                    <p class="text-sm text-muted font-medium">रतनगढ़, चूरू (राजस्थान)</p>
-                </div>
-            </a>
-            <nav class="hidden md:flex items-center gap-6 font-semibold text-white">
-                <a href="index.html" class="hover:text-gold transition">होम</a>
-                <a href="about.html" class="hover:text-gold transition">हमारे बारे में</a>
-                <a href="gallery.html" class="hover:text-gold transition">गैलरी</a>
-                <a href="contact.html" class="hover:text-gold transition">संपर्क</a>
-            </nav>
-            <a href="donate.html" class="bg-accent text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 shadow-lg transition">दान करें 🙏</a>
-        </div>
-    </header>
-
-    <!-- Main Content -->
+    <!-- ================= MAIN CONTENT ================= -->
     <main class="max-w-4xl mx-auto px-4 py-16">
         
+        <!-- Page Title -->
         <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gold mb-4">डिस्क्लेमर (Disclaimer)</h2>
+            <span class="bg-white/10 border border-gold/30 text-gold px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">कानूनी जानकारी</span>
+            <h1 class="text-4xl sm:text-5xl font-bold text-gold mt-4 mb-4">डिस्क्लेमर (Disclaimer)</h1>
             <p class="text-gray-400">अंतिम अपडेट: 24 अक्टूबर 2026</p>
         </div>
 
-        <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg space-y-8 text-gray-300 leading-relaxed text-lg">
+        <!-- Disclaimer Content -->
+        <div class="bg-card p-8 md:p-10 rounded-2xl border border-custom shadow-lg space-y-8 text-gray-300 leading-relaxed text-lg">
             
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">1. सामान्य जानकारी (General Information)</h3>
-                <p>इस वेबसाइट (<strong>www.ngssl.mywire.org</strong>) पर दी गई सभी जानकारी केवल सामान्य जानकारी के उद्देश्य से प्रकाशित की गई है। नंदी गौशाला, लछारसर इस जानकारी की पूर्णता, विश्वसनीयता और सटीकता के बारे में कोई वारंटी नहीं देता है।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-info-circle text-gold"></i> 1. सामान्य जानकारी
+                </h2>
+                <p>
+                    इस वेबसाइट (<strong>www.ngssl.mywire.org</strong>) पर दी गई सभी जानकारी केवल सामान्य जागरूकता और जानकारी के उद्देश्य से प्रकाशित की गई है। नंदी गौशाला, लछारसर (NANDI GO SEWA SANSTHAN LACHHARSAR) इस जानकारी की पूर्णता, विश्वसनीयता और सटीकता के बारे में कोई वारंटी या गारंटी नहीं देता है।
+                </p>
+                <p class="mt-2">
+                    इस वेबसाइट पर दी गई किसी भी जानकारी पर कार्रवाई करने से पहले, कृपया स्वयं जांच-परख कर लें या हमसे सीधे संपर्क करें।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">2. पशु चिकित्सा सलाह (Veterinary Advice)</h3>
-                <p>इस वेबसाइट पर दी गई जानकारी पशु चिकित्सा सलाह (Veterinary Advice) नहीं है। यदि आपके पशु को कोई स्वास्थ्य समस्या है, तो कृपया तुरंत एक योग्य पशु चिकित्सक से परामर्श लें। गौशाला द्वारा दी गई जानकारी के आधार पर किए गए किसी भी निर्णय के परिणामस्वरूप उत्पन्न होने वाले नुकसान के लिए हम जिम्मेदार नहीं हैं।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-paw text-gold"></i> 2. पशु चिकित्सा सलाह (Veterinary Advice)
+                </h2>
+                <p>
+                    इस वेबसाइट पर दी गई जानकारी किसी भी तरह से पशु चिकित्सा सलाह (Veterinary Advice) नहीं है। यदि आपके पशु या गौवंश को कोई स्वास्थ्य समस्या है, तो कृपया तुरंत एक योग्य पशु चिकित्सक (Veterinarian) से परामर्श लें।
+                </p>
+                <p class="mt-2">
+                    गौशाला द्वारा दी गई जानकारी के आधार पर किए गए किसी भी निर्णय के परिणामस्वरूप उत्पन्न होने वाले नुकसान या चोट के लिए हम जिम्मेदार नहीं हैं।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">3. बाहरी लिंक (External Links)</h3>
-                <p>इस वेबसाइट में अन्य वेबसाइटों के लिंक हो सकते हैं जो हमारे द्वारा नियंत्रित या बनाए नहीं गए हैं। ऐसे लिंक केवल आपकी सुविधा के लिए प्रदान किए गए हैं। हम उन तीसरे पक्ष की वेबसाइटों की सामग्री, गोपनीयता नीतियों या प्रथाओं के लिए जिम्मेदार नहीं हैं।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-hand-holding-usd text-gold"></i> 3. वित्तीय लेनदेन (Financial Transactions)
+                </h2>
+                <p>
+                    वेबसाइट पर दिए गए UPI ID और QR कोड के माध्यम से दान करते समय, कृपया सुनिश्चित करें कि आप सही खाते में भुगतान कर रहे हैं। किसी भी गलत खाते में किए गए भुगतान या किसी भी प्रकार की तकनीकी त्रुटि के लिए गौशाला प्रबंधन जिम्मेदार नहीं होगा।
+                </p>
+                <p class="mt-2">
+                    सभी दान स्वैच्छिक हैं और गैर-वापसी योग्य (Non-refundable) हैं। दान करने से पहले कृपया अपनी राशि की पुष्टि अवश्य कर लें।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">4. वित्तीय लेनदेन (Financial Transactions)</h3>
-                <p>वेबसाइट पर दिए गए UPI ID और QR कोड के माध्यम से दान करते समय, कृपया सुनिश्चित करें कि आप सही खाते में भुगतान कर रहे हैं। किसी भी गलत खाते में किए गए भुगतान या किसी तकनीकी त्रुटि के लिए गौशाला प्रबंधन जिम्मेदार नहीं होगा।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-link text-gold"></i> 4. बाहरी लिंक (External Links)
+                </h2>
+                <p>
+                    हमारी वेबसाइट में सोशल मीडिया प्लेटफॉर्म (जैसे Facebook, Instagram, YouTube) और अन्य वेबसाइटों के लिंक हो सकते हैं। ये लिंक केवल आपकी सुविधा के लिए दिए गए हैं।
+                </p>
+                <p class="mt-2">
+                    हम उन तीसरे पक्ष (Third-Party) की वेबसाइटों की सामग्री, गोपनीयता नीतियों या प्रथाओं को नियंत्रित नहीं करते हैं और उनके लिए कोई जिम्मेदारी नहीं लेते हैं।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">5. उपलब्धता (Availability)</h3>
-                <p>हम वेबसाइट को हमेशा चालू रखने का प्रयास करते हैं, लेकिन हम यह गारंटी नहीं देते हैं कि वेबसाइट बिना किसी रुकावट के काम करेगी। सर्वर डाउन, इंटरनेट समस्या या अन्य तकनीकी कारणों से वेबसाइट कुछ समय के लिए बंद हो सकती है।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-server text-gold"></i> 5. वेबसाइट की उपलब्धता (Availability)
+                </h2>
+                <p>
+                    हम वेबसाइट को हमेशा चालू रखने का पूरा प्रयास करते हैं, लेकिन हम यह गारंटी नहीं देते हैं कि वेबसाइट बिना किसी रुकावट के काम करेगी। सर्वर डाउन, इंटरनेट समस्या, मेंटेनेंस या अन्य तकनीकी कारणों से वेबसाइट कुछ समय के लिए बंद हो सकती है। ऐसी स्थिति में हम किसी भी नुकसान के लिए जिम्मेदार नहीं होंगे।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">6. कानूनी जिम्मेदारी (Legal Liability)</h3>
-                <p>वेबसाइट के उपयोग से उत्पन्न होने वाले किसी भी प्रकार के प्रत्यक्ष या अप्रत्यक्ष नुकसान के लिए नंदी गौशाला प्रबंधन, उसके कर्मचारी या स्वयंसेवक जिम्मेदार नहीं होंगे।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-balance-scale text-gold"></i> 6. दायित्व की सीमा (Limitation of Liability)
+                </h2>
+                <p>
+                    किसी भी परिस्थिति में नंदी गौशाला, लछारसर, उसके प्रबंधक, कर्मचारी या स्वयंसेवक, इस वेबसाइट के उपयोग या उपयोग करने में असमर्थता से उत्पन्न होने वाले किसी भी प्रत्यक्ष, अप्रत्यक्ष, आकस्मिक या परिणामी नुकसान के लिए उत्तरदायी नहीं होंगे।
+                </p>
             </section>
 
-            <section>
-                <h3 class="text-2xl font-bold text-white mb-3">7. संपर्क (Contact)</h3>
-                <p>यदि इस डिस्क्लेमर के संबंध में आपके कोई प्रश्न हैं, तो कृपया हमसे संपर्क करें:</p>
-                <p class="mt-2">📧 ईमेल: <a href="mailto:info@ngss.mywire.org" class="text-gold hover:underline">info@ngss.mywire.org</a></p>
-                <p>📞 फोन: <a href="tel:9216626445" class="text-gold hover:underline">+91 92166 26445</a></p>
+            <section class="border-t border-gray-700 pt-6 mt-8">
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-envelope text-gold"></i> संपर्क करें
+                </h2>
+                <p class="mb-4">यदि इस डिस्क्लेमर के संबंध में आपके कोई प्रश्न या चिंताएं हैं, तो कृपया हमसे संपर्क करें:</p>
+                
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3 font-medium">
+                    <p class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-gold"></i> नंदी गौशाला परिसर, ग्राम - लछारसर, तहसील - रतनगढ़, जिला - चूरू, राजस्थान (पिन - 331802)</p>
+                    <p class="flex items-center gap-3"><i class="fas fa-phone-alt text-gold"></i> <a href="tel:+919216626445" class="hover:text-gold transition">+91 92166 26445</a></p>
+                    <p class="flex items-center gap-3"><i class="fas fa-envelope text-gold"></i> <a href="mailto:info@ngss.mywire.org" class="hover:text-gold transition">info@ngss.mywire.org</a></p>
+                </div>
             </section>
-
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-xl font-bold text-gold mb-2">गावो विश्वस्य मातरः</p>
-            <p class="text-sm text-gray-500">© 2026 नंदी गौशाला, लछारसर — सर्वाधिकार सुरक्षित</p>
-        </div>
-    </footer>
+    <!-- ================= FOOTER LOADER ================= -->
+    <div id="footer-container"></div>
 
+    <!-- ================= SCRIPTS ================= -->
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <script src="script.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
 </body>
 </html>

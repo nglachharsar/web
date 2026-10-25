@@ -4,113 +4,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>नियम एवं शर्तें - नंदी गौशाला लछारसर</title>
+    <meta name="description" content="नंदी गौशाला की वेबसाइट के उपयोग के नियम और शर्तें।">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased bg-main text-light">
 
-    <!-- Page Loader -->
-    <div id="page-loader" style="display: none;">
-        <div class="loader-spinner"></div>
-        <p class="mt-4 text-gold font-bold text-xl animate-pulse">लोड हो रहा है...</p>
-    </div>
+    <!-- ================= HEADER LOADER ================= -->
+    <div id="header-container"></div>
 
-    <!-- Header -->
-    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="ngl.svg" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
-                <div>
-                    <h1 class="text-2xl font-bold text-gold leading-tight">नंदी गौशाला, लछारसर</h1>
-                    <p class="text-sm text-muted font-medium">रतनगढ़, चूरू (राजस्थान)</p>
-                </div>
-            </a>
-            <nav class="hidden md:flex items-center gap-6 font-semibold text-white">
-                <a href="index.html" class="hover:text-gold transition">होम</a>
-                <a href="about.html" class="hover:text-gold transition">हमारे बारे में</a>
-                <a href="gallery.html" class="hover:text-gold transition">गैलरी</a>
-                <a href="contact.html" class="hover:text-gold transition">संपर्क</a>
-            </nav>
-            <a href="donate.html" class="bg-accent text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 shadow-lg transition">दान करें 🙏</a>
-        </div>
-    </header>
-
-    <!-- Main Content -->
+    <!-- ================= MAIN CONTENT ================= -->
     <main class="max-w-4xl mx-auto px-4 py-16">
         
+        <!-- Page Title -->
         <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gold mb-4">नियम एवं शर्तें (Terms & Conditions)</h2>
+            <span class="bg-white/10 border border-gold/30 text-gold px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">कानूनी जानकारी</span>
+            <h1 class="text-4xl sm:text-5xl font-bold text-gold mt-4 mb-4">नियम एवं शर्तें (Terms & Conditions)</h1>
             <p class="text-gray-400">अंतिम अपडेट: 24 अक्टूबर 2026</p>
         </div>
 
-        <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg space-y-8 text-gray-300 leading-relaxed text-lg">
+        <!-- Terms Content -->
+        <div class="bg-card p-8 md:p-10 rounded-2xl border border-custom shadow-lg space-y-8 text-gray-300 leading-relaxed text-lg">
             
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">1. शर्तों की स्वीकृति (Acceptance of Terms)</h3>
-                <p>नंदी गौशाला, लछारसर की इस वेबसाइट का उपयोग करके आप इन नियमों और शर्तों से सहमत होते हैं। यदि आप इन शर्तों से सहमत नहीं हैं, तो कृपया इस वेबसाइट का उपयोग न करें।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-check-circle text-gold"></i> 1. शर्तों की स्वीकृति
+                </h2>
+                <p>
+                    नंदी गौशाला, लछारसर (<strong>www.ngssl.mywire.org</strong>) की इस वेबसाइट का उपयोग करके आप इन नियमों और शर्तों से सहमत होते हैं। यदि आप इन शर्तों से सहमत नहीं हैं, तो कृपया इस वेबसाइट का उपयोग न करें। ये नियम सभी आगंतुकों, दानकर्ताओं और स्वयंसेवकों पर लागू होते हैं।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">2. वेबसाइट का उपयोग (Use of Website)</h3>
-                <p>इस वेबसाइट का उपयोग केवल वैध उद्देश्यों के लिए किया जाना चाहिए। आप निम्नलिखित कार्य नहीं करेंगे:</p>
-                <ul class="list-disc pl-5 mt-2 space-y-2">
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-laptop text-gold"></i> 2. वेबसाइट का उपयोग
+                </h2>
+                <p>
+                    इस वेबसाइट का उपयोग केवल वैध (Legal) उद्देश्यों के लिए किया जाना चाहिए। आप निम्नलिखित कार्य नहीं करेंगे:
+                </p>
+                <ul class="list-disc pl-6 mt-2 space-y-2 text-gray-400">
                     <li>वेबसाइट को हैक करने या उसकी सुरक्षा भंग करने का प्रयास करना।</li>
-                    <li>किसी भी प्रकार का वायरस या मैलवेयर अपलोड करना।</li>
-                    <li>वेबसाइट के कंटेंट को बिना अनुमति के कॉपी या पुनः प्रकाशित करना।</li>
-                    <li>झूठी या भ्रामक जानकारी का उपयोग करके दान करना।</li>
+                    <li>किसी भी प्रकार का वायरस, मैलवेयर या हानिकारक कोड अपलोड करना।</li>
+                    <li>वेबसाइट के कंटेंट को बिना लिखित अनुमति के कॉपी या पुनः प्रकाशित करना।</li>
+                    <li>झूठी या भ्रामक जानकारी का उपयोग करके दान करना या फर्जी आईडी बनाना।</li>
+                    <li>वेबसाइट पर किसी भी तरह की अवैध या आपत्तिजनक सामग्री पोस्ट करना।</li>
                 </ul>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">3. बौद्धिक संपदा (Intellectual Property)</h3>
-                <p>इस वेबसाइट पर प्रदर्शित सभी सामग्री, जिसमें टेक्स्ट, ग्राफिक्स, लोगो, तस्वीरें और सॉफ्टवेयर शामिल हैं, नंदी गौशाला की संपत्ति हैं और कॉपीराइट कानूनों द्वारा संरक्षित हैं। बिना लिखित अनुमति के इसका व्यावसायिक उपयोग नहीं किया जा सकता।</p>
-            </section>
-
-            <section>
-                <h3 class="text-2xl font-bold text-white mb-3">4. दान (Donations)</h3>
-                <ul class="list-disc pl-5 mt-2 space-y-2">
-                    <li>वेबसाइट के माध्यम से किए गए सभी दान स्वैच्छिक हैं।</li>
-                    <li>दान की गई राशि वापस नहीं की जाएगी (Non-refundable)।</li>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-hand-holding-usd text-gold"></i> 3. दान (Donations) के नियम
+                </h2>
+                <p>
+                    वेबसाइट के माध्यम से किए गए सभी दान स्वैच्छिक (Voluntary) हैं। दान से जुड़े कुछ महत्वपूर्ण नियम निम्नलिखित हैं:
+                </p>
+                <ul class="list-disc pl-6 mt-2 space-y-2 text-gray-400">
+                    <li>दान की गई राशि किसी भी परिस्थिति में वापस नहीं की जाएगी (Non-refundable)।</li>
                     <li>आपको दान करने से पहले सुनिश्चित करना चाहिए कि आप सही UPI ID या QR कोड स्कैन कर रहे हैं।</li>
-                    <li>हम किसी भी तकनीकी त्रुटि के कारण खोए हुए पैसे के लिए जिम्मेदार नहीं होंगे।</li>
+                    <li>हम किसी भी तकनीकी त्रुटि, बैंक सर्वर डाउन या गलत खाते में भेजे गए पैसे के लिए जिम्मेदार नहीं होंगे।</li>
+                    <li>रसीद (PDF) डाउनलोड करते समय दी गई जानकारी आपकी स्वयं की होनी चाहिए।</li>
                 </ul>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">5. दायित्व की सीमा (Limitation of Liability)</h3>
-                <p>नंदी गौशाला प्रबंधन किसी भी प्रत्यक्ष, अप्रत्यक्ष, आकस्मिक या परिणामी नुकसान के लिए उत्तरदायी नहीं होगा जो इस वेबसाइट के उपयोग या उपयोग करने में असमर्थता से उत्पन्न होता है।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-copyright text-gold"></i> 4. बौद्धिक संपदा (Intellectual Property)
+                </h2>
+                <p>
+                    इस वेबसाइट पर प्रदर्शित सभी सामग्री, जिसमें टेक्स्ट, ग्राफिक्स, लोगो (ngl.svg), तस्वीरें और सॉफ्टवेयर शामिल हैं, नंदी गौशाला (NANDI GO SEWA SANSTHAN) की संपत्ति हैं और कॉपीराइट कानूनों द्वारा संरक्षित हैं। बिना हमारी लिखित अनुमति के इसका व्यावसायिक उपयोग नहीं किया जा सकता।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">6. बाहरी लिंक (External Links)</h3>
-                <p>हमारी वेबसाइट में तीसरे पक्ष की वेबसाइटों के लिंक हो सकते हैं। हम उन वेबसाइटों की सामग्री या प्रथाओं को नियंत्रित नहीं करते हैं और उनके लिए कोई जिम्मेदारी नहीं लेते हैं।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-exclamation-triangle text-gold"></i> 5. दायित्व की सीमा (Limitation of Liability)
+                </h2>
+                <p>
+                    नंदी गौशाला प्रबंधन किसी भी प्रत्यक्ष, अप्रत्यक्ष, आकस्मिक या परिणामी नुकसान के लिए उत्तरदायी नहीं होगा जो इस वेबसाइट के उपयोग या उपयोग करने में असमर्थता से उत्पन्न होता है। यह वेबसाइट "जैसी है वैसी" (As is) प्रदान की गई है।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">7. लागू कानून (Governing Law)</h3>
-                <p>इन नियमों और शर्तों को भारतीय कानूनों के अनुसार शासित किया जाएगा। किसी भी विवाद की स्थिति में, अधिकार क्षेत्र चूरू (राजस्थान) के न्यायालयों का होगा।</p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-link text-gold"></i> 6. बाहरी लिंक (External Links)
+                </h2>
+                <p>
+                    हमारी वेबसाइट में तीसरे पक्ष की वेबसाइटों (जैसे सोशल मीडिया प्लेटफॉर्म) के लिंक हो सकते हैं। हम उन वेबसाइटों की सामग्री, गोपनीयता नीतियों या प्रथाओं को नियंत्रित नहीं करते हैं और उनके लिए कोई जिम्मेदारी नहीं लेते हैं।
+                </p>
             </section>
 
             <section>
-                <h3 class="text-2xl font-bold text-white mb-3">8. संपर्क (Contact)</h3>
-                <p>किसी भी प्रश्न के लिए, कृपया हमसे संपर्क करें:</p>
-                <p class="mt-2">📧 ईमेल: <a href="mailto:info@ngss.mywire.org" class="text-gold hover:underline">info@ngss.mywire.org</a></p>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-gavel text-gold"></i> 7. लागू कानून (Governing Law)
+                </h2>
+                <p>
+                    इन नियमों और शर्तों को भारतीय कानूनों के अनुसार शासित किया जाएगा। किसी भी विवाद की स्थिति में, अधिकार क्षेत्र (Jurisdiction) चूरू (राजस्थान) के न्यायालयों का होगा।
+                </p>
             </section>
 
+            <section>
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-edit text-gold"></i> 8. नियमों में बदलाव
+                </h2>
+                <p>
+                    हमें किसी भी समय इन नियमों और शर्तों को अपडेट या बदलने का अधिकार सुरक्षित है। बदलाव वेबसाइट पर पोस्ट होते ही प्रभावी हो जाएंगे। आपको समय-समय पर इस पेज को चेक करते रहना चाहिए।
+                </p>
+            </section>
+
+            <section class="border-t border-gray-700 pt-6 mt-8">
+                <h2 class="text-2xl font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fas fa-envelope text-gold"></i> संपर्क करें
+                </h2>
+                <p class="mb-4">यदि इन नियमों के संबंध में आपके कोई प्रश्न हैं, तो कृपया हमसे संपर्क करें:</p>
+                
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 space-y-3 font-medium">
+                    <p class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-gold"></i> नंदी गौशाला परिसर, ग्राम - लछारसर, तहसील - रतनगढ़, जिला - चूरू, राजस्थान (पिन - 331802)</p>
+                    <p class="flex items-center gap-3"><i class="fas fa-phone-alt text-gold"></i> <a href="tel:+919216626445" class="hover:text-gold transition">+91 92166 26445</a></p>
+                    <p class="flex items-center gap-3"><i class="fas fa-envelope text-gold"></i> <a href="mailto:info@ngss.mywire.org" class="hover:text-gold transition">info@ngss.mywire.org</a></p>
+                </div>
+            </section>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800 mt-12">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-xl font-bold text-gold mb-2">गावो विश्वस्य मातरः</p>
-            <p class="text-sm text-gray-500">© 2026 नंदी गौशाला, लछारसर — सर्वाधिकार सुरक्षित</p>
-        </div>
-    </footer>
+    <!-- ================= FOOTER LOADER ================= -->
+    <div id="footer-container"></div>
 
+    <!-- ================= SCRIPTS ================= -->
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <script src="script.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
 </body>
 </html>

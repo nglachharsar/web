@@ -1,29 +1,122 @@
 <!DOCTYPE html>
 <html lang="hi" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8"><title>हमारे बारे में</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हमारे बारे में - नंदी गौशाला लछारसर</title>
+    <meta name="description" content="नंदी गौशाला, लछारसर के बारे में जानें। हमारा इतिहास, हमारा उद्देश्य और गौ सेवा के प्रति हमारा समर्पण।">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-main text-light">
-    <header class="bg-main/95 shadow-lg sticky top-0 z-50 border-b border-custom">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3"><img src="ngl.svg" class="h-12 w-12 bg-white rounded-full p-1" onerror="this.src='ngl.png'"><h1 class="text-xl font-bold text-gold">नंदी गौशाला</h1></a>
-            <nav class="hidden md:flex gap-6 font-semibold text-white">
-                <a href="index.html" class="hover:text-gold">होम</a><a href="about.html" class="text-gold">हमारे बारे में</a><a href="gallery.html" class="hover:text-gold">गैलरी</a><a href="contact.html" class="hover:text-gold">संपर्क</a>
-            </nav>
-            <a href="donate.html" class="bg-accent text-white px-5 py-2 rounded-full font-bold">दान करें</a>
+<body class="antialiased bg-main text-light">
+
+    <!-- ================= HEADER LOADER ================= -->
+    <div id="header-container"></div>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="max-w-7xl mx-auto px-4 py-16">
+        
+        <!-- Page Title -->
+        <div class="text-center mb-16">
+            <span class="bg-white/10 border border-gold/30 text-gold px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">हमारे बारे में</span>
+            <h1 class="text-4xl sm:text-5xl font-bold text-gold mt-4 mb-4">नंदी गौशाला की कहानी</h1>
+            <p class="text-gray-400 text-lg max-w-2xl mx-auto">गौ सेवा ही परमो धर्मः। हमारा उद्देश्य बेसहारा नंदी महाराज को एक सुरक्षित और सम्मानजनक जीवन देना है।</p>
         </div>
-    </header>
-    <main class="max-w-4xl mx-auto px-4 py-16">
-        <h2 class="text-4xl font-bold text-gold mb-6 border-b border-gray-700 pb-4">हमारे बारे में</h2>
-        <div class="bg-card p-8 rounded-2xl border border-custom space-y-4 text-lg text-gray-300">
-            <p>लछारसर गाँव की इस पावन धरा पर स्थापित <strong class="text-gold">नंदी गौशाला</strong> पूर्ण रूप से नंदी महाराज की नि:स्वार्थ सेवा के लिए समर्पित है।</p>
-            <p>हमारा मुख्य उद्देश्य उन बेसहारा नंदी देवों को सुरक्षित और सम्मानजनक जीवन देना है, जो सड़कों पर दुर्घटनाओं, भूख या बीमारी का शिकार होते हैं। यहाँ उनके लिए विशाल बाड़े, खुले घूमने की जगह और छायादार शेड बनाए गए हैं।</p>
-            <p>हमारी संस्था "NANDI GO SEWA SANSTHAN LACHHARSAR" के तहत काम करती है। हमारा लक्ष्य न केवल गौ सेवा है, बल्कि पर्यावरण संरक्षण और जैविक खेती को बढ़ावा देना भी है।</p>
+
+        <!-- Section 1: History -->
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl font-bold text-white mb-4">हमारी स्थापना</h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    लछारसर गाँव की इस पावन धरा पर, जहाँ की मिट्टी में सेवा और संस्कृति की सुगंध है, वहीं <strong>नंदी गौशाला</strong> की स्थापना की गई। यह गौशाला पूर्ण रूप से नंदी महाराज (बैलों) की नि:स्वार्थ सेवा के लिए समर्पित है।
+                </p>
+                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                    शुरुआत में यहाँ सिर्फ कुछ गायें थीं, लेकिन आज यहाँ दर्जनों बेसहारा, वृद्ध और बीमार नंदी देवों की देखभाल की जा रही है। हमारा मानना है कि गौ सेवा करने से बड़ा कोई पुण्य नहीं है।
+                </p>
+                <div class="bg-gray-800 border-l-4 border-gold p-4 rounded-r-lg">
+                    <p class="text-gray-200 font-medium">"गावो विश्वस्य मातरः" - गायें पूरे विश्व की माता हैं।</p>
+                </div>
+            </div>
+            <div class="order-1 md:order-2 bg-gray-800 h-96 rounded-2xl flex items-center justify-center border-2 border-gray-700 shadow-lg relative overflow-hidden">
+                <div class="absolute inset-0 bg-gold/5"></div>
+                <span class="text-gray-500 font-bold z-10">यहाँ गौशाला की पुरानी फोटो लगाएं</span>
+            </div>
+        </div>
+
+        <!-- Section 2: Vision & Mission -->
+        <div class="mb-20">
+            <h2 class="text-3xl font-bold text-center text-gold mb-10">हमारा विजन और मिशन</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Vision Card -->
+                <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg hover:border-gold transition">
+                    <div class="text-5xl text-gold mb-4"><i class="fas fa-eye"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-3">हमारा विजन</h3>
+                    <p class="text-gray-300 leading-relaxed">
+                        एक ऐसे समाज का निर्माण करना जहाँ कोई भी गौवंश भूखा, प्यासा या बेसहारा न हो। हम चाहते हैं कि हर नंदी महाराज को वह सम्मान मिले जो एक माँ को मिलता है।
+                    </p>
+                </div>
+                <!-- Mission Card -->
+                <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg hover:border-gold transition">
+                    <div class="text-5xl text-gold mb-4"><i class="fas fa-bullseye"></i></div>
+                    <h3 class="text-2xl font-bold text-white mb-3">हमारा मिशन</h3>
+                    <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                        <li>सड़कों पर घायल पशुओं को बचाना और उनका मुफ्त इलाज करना।</li>
+                        <li>उनके लिए हरे और सूखे चारे की उत्तम व्यवस्था करना।</li>
+                        <li>राजस्थान की कड़ी धूप और ठंड से बचाने के लिए मजबूत शेड बनाना।</li>
+                        <li>गोबर से जैविक खाद बनाकर किसानों को सस्ती दर पर उपलब्ध कराना।</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Registration & Trust -->
+        <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg mb-20">
+            <h2 class="text-3xl font-bold text-gold mb-6 text-center">संस्था की जानकारी</h2>
+            <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 bg-gray-800 rounded-xl">
+                    <i class="fas fa-certificate text-4xl text-gold mb-3"></i>
+                    <h4 class="font-bold text-white">रजिस्टर्ड संस्था</h4>
+                    <p class="text-sm text-gray-400 mt-1">सरकार द्वारा मान्यता प्राप्त</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-xl">
+                    <i class="fas fa-file-invoice-dollar text-4xl text-gold mb-3"></i>
+                    <h4 class="font-bold text-white">80G टैक्स छूट</h4>
+                    <p class="text-sm text-gray-400 mt-1">दान पर टैक्स बेनिफिट</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-xl">
+                    <i class="fas fa-hand-holding-heart text-4xl text-gold mb-3"></i>
+                    <h4 class="font-bold text-white">100% पारदर्शिता</h4>
+                    <p class="text-sm text-gray-400 mt-1">हर दान का हिसाब</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-xl">
+                    <i class="fas fa-users text-4xl text-gold mb-3"></i>
+                    <h4 class="font-bold text-white">गौ भक्त समुदाय</h4>
+                    <p class="text-sm text-gray-400 mt-1">सैकड़ों स्वयंसेवक</p>
+                </div>
+            </div>
         </div>
     </main>
-    <footer class="bg-gray-950 py-6 text-center mt-10 border-t border-gray-800"><p>© 2026 नंदी गौशाला</p></footer>
+
+    <!-- ================= FOOTER LOADER ================= -->
+    <div id="footer-container"></div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
 </body>
 </html>

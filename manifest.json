@@ -1,0 +1,21 @@
+{
+  "name": "नंदी गौशाला, लछारसर",
+  "short_name": "नंदी गौशाला",
+  "description": "गौ सेवा ही परम धर्म है। बेसहारा नंदी महाराज की सेवा के लिए समर्पित संस्था।",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#f59e0b",
+  "icons": [
+    {
+      "src": "ngl.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "ngl.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -3,78 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>नंदी गौशाला लछारसर</title>
+    <title>नंदी गौशाला लछारसर - गौ सेवा ही परम धर्म है</title>
+    <meta name="description" content="लछारसर (रतनगढ़, चूरू) स्थित नंदी गौशाला में बेसहारा नंदी महाराज की सेवा। दान करें, गौ गोद लें और पुण्य कमाएं।">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="antialiased bg-main text-light">
 
-    <!-- Page Loader -->
+    <!-- ================= 1. PAGE LOADER ================= -->
     <div id="page-loader">
         <div class="loader-spinner"></div>
         <p class="mt-4 text-gold font-bold text-xl animate-pulse">लोड हो रहा है...</p>
     </div>
 
-    <!-- Notice Popup -->
+    <!-- ================= 2. NOTICE POPUP ================= -->
     <div id="notice-overlay"></div>
     <div id="notice-popup" class="p-8 text-center">
         <h3 class="text-2xl font-bold text-gold mb-4">📢 महत्वपूर्ण सूचना</h3>
         <div id="notice-text" class="text-gray-200 text-lg mb-6 leading-relaxed"></div>
-        <button onclick="closeNotice()" class="bg-accent text-white px-8 py-2 rounded-full font-bold hover:bg-orange-700 transition">समझ गया, बंद करें</button>
+        <button onclick="closeNotice()" class="bg-accent text-white px-8 py-2 rounded-full font-bold hover:bg-orange-700 transition shadow-lg">समझ गया, बंद करें</button>
     </div>
+    
+    <!-- Minimized Bell Button -->
     <button id="notice-minimized" onclick="openNotice()" class="bg-accent text-white h-14 w-14 flex items-center justify-center text-2xl shadow-lg rounded-full">
         <i class="fas fa-bell"></i>
     </button>
 
-    <!-- Header -->
-    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="ngl.svg" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
-                <div>
-                    <h1 class="text-2xl font-bold text-gold">नंदी गौशाला, लछारसर</h1>
-                    <p class="text-sm text-muted font-medium">रतनगढ़, चूरू (राजस्थान)</p>
-                </div>
-            </a>
-            <nav class="hidden md:flex items-center gap-6 font-semibold text-white">
-                <a href="index.html" class="text-gold">होम</a>
-                <a href="donate.html" class="hover:text-gold transition">दान करें</a>
-            </nav>
-            <a href="donate.html" class="bg-accent text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 shadow-lg transition">दान करें 🙏</a>
-        </div>
-    </header>
+    <!-- ================= 3. HEADER LOADER ================= -->
+    <!-- header.js इस जगह पर हेडर लोड करेगा -->
+    <div id="header-container"></div>
 
-    <!-- Hero Section -->
-    <section class="hero-bg text-white text-center py-28 px-4 relative">
+    <!-- ================= 4. HERO SECTION ================= -->
+    <section class="hero-bg text-white text-center py-32 px-4 relative">
         <div class="max-w-4xl mx-auto relative z-10">
-            <h2 class="text-4xl sm:text-6xl font-bold mb-6">गौ सेवा ही <span class="text-gold">परमो धर्मः</span></h2>
-            <p class="text-lg sm:text-2xl text-gray-300 mb-10">लछारसर की इस पावन धरा पर, हम बेसहारा, वृद्ध और बीमार नंदी महाराज को आश्रय, भोजन और चिकित्सा प्रदान करते हैं।</p>
-            <a href="donate.html" class="bg-accent text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-orange-700 transition shadow-lg">अभी दान करें</a>
+            <span class="bg-white/10 border border-gold/30 text-gold px-5 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg backdrop-blur-sm inline-block mb-4">
+                परमार्थ कार्य
+            </span>
+            <h2 class="text-4xl sm:text-6xl font-bold mb-6 leading-tight drop-shadow-2xl">
+                गौ सेवा ही <span class="text-gold">परमो धर्मः</span>
+            </h2>
+            <p class="text-lg sm:text-2xl text-gray-200 max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-10">
+                लछारसर की इस पावन धरा पर, हम बेसहारा, वृद्ध और बीमार नंदी महाराज (बैलों) को आश्रय, भोजन और चिकित्सा प्रदान करते हैं।
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="donate.html" class="bg-accent text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-orange-700 transition shadow-lg flex items-center gap-2">
+                    <i class="fas fa-heart"></i> अभी दान करें
+                </a>
+                <a href="about.html" class="bg-white text-gray-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-200 transition shadow-lg">
+                    और जानें
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 py-16">
-        <section class="bg-card p-6 rounded-2xl border border-custom relative overflow-hidden">
+    <!-- ================= 5. TRUST BADGES ================= -->
+    <div class="bg-card border border-custom py-5 shadow-xl relative z-20 -mt-8 mx-4 md:mx-auto max-w-5xl rounded-2xl">
+        <div class="flex flex-wrap justify-center gap-8 text-sm md:text-base text-gray-200 font-semibold px-4">
+            <span class="flex items-center gap-2"><i class="fas fa-certificate text-gold text-lg"></i> सरकारी रजिस्टर्ड संस्था</span>
+            <span class="flex items-center gap-2"><i class="fas fa-file-invoice-dollar text-gold text-lg"></i> 80G टैक्स छूट उपलब्ध</span>
+            <span class="flex items-center gap-2"><i class="fas fa-check-circle text-gold text-lg"></i> 100% पारदर्शी दान</span>
+        </div>
+    </div>
+
+    <!-- ================= 6. MAIN CONTENT ================= -->
+    <main class="max-w-7xl mx-auto px-4 py-16 space-y-20">
+        
+        <!-- डायनामिक समाचार (जो एडमिन पैनल से अपडेट होगा) -->
+        <section class="bg-card p-6 md:p-8 rounded-2xl shadow-lg border border-custom relative overflow-hidden">
             <div class="absolute top-0 left-0 w-2 h-full bg-gold"></div>
-            <h3 class="text-2xl font-bold text-gold mb-4">📰 गौशाला समाचार</h3>
-            <div id="page-content" class="text-gray-200 text-lg"><p>लोड हो रहा है...</p></div>
+            <h3 class="text-2xl font-bold text-gold mb-4 flex items-center gap-2">
+                <span>📰</span> गौशाला समाचार
+            </h3>
+            <div id="page-content" class="text-gray-300 leading-relaxed text-lg font-medium">
+                <p>लोड हो रहा है...</p>
+            </div>
+        </section>
+
+        <!-- हमारे बारे में (संक्षिप्त जानकारी) -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+                <h3 class="text-3xl font-bold text-gold mb-4">हमारा उद्देश्य</h3>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    लछारसर गाँव की इस पावन धरा पर स्थापित <strong>नंदी गौशाला</strong> पूर्ण रूप से नंदी महाराज की नि:स्वार्थ सेवा के लिए समर्पित है। हमारा उद्देश्य उन बेसहारा पशुओं को सुरक्षित जीवन देना है, जो सड़कों पर दुर्घटनाओं या बीमारी का शिकार होते हैं।
+                </p>
+                <a href="about.html" class="inline-block bg-gray-800 text-gold border border-gold px-6 py-2 rounded-full font-bold hover:bg-gray-700 transition">
+                    पूरी कहानी पढ़ें →
+                </a>
+            </div>
+            <div class="order-1 md:order-2 bg-gray-800 h-80 rounded-2xl flex items-center justify-center border-2 border-gray-700 shadow-lg relative overflow-hidden">
+                <div class="absolute inset-0 bg-gold/5"></div>
+                <span class="text-gray-500 font-bold z-10"><i class="fas fa-image mr-2"></i> यहाँ गौशाला की फोटो लगाएं</span>
+            </div>
+        </section>
+
+        <!-- हमारी सेवाएँ (4 बॉक्स) -->
+        <section>
+            <h3 class="text-3xl font-bold text-gold mb-8 text-center">हमारी मुख्य सेवाएँ</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- सेवा 1 -->
+                <div class="bg-card p-6 rounded-xl border border-custom hover:border-gold hover:-translate-y-1 transition duration-300 text-center shadow-lg">
+                    <div class="text-5xl mb-4 text-gold">🚜</div>
+                    <h4 class="text-xl font-bold text-white mb-2">उत्तम चारा</h4>
+                    <p class="text-gray-400 text-sm">पौष्टिक हरा और सूखा चारा।</p>
+                </div>
+                <!-- सेवा 2 -->
+                <div class="bg-card p-6 rounded-xl border border-custom hover:border-gold hover:-translate-y-1 transition duration-300 text-center shadow-lg">
+                    <div class="text-5xl mb-4 text-gold">🩺</div>
+                    <h4 class="text-xl font-bold text-white mb-2">निःशुल्क चिकित्सा</h4>
+                    <p class="text-gray-400 text-sm">घायल पशुओं का मुफ्त इलाज।</p>
+                </div>
+                <!-- सेवा 3 -->
+                <div class="bg-card p-6 rounded-xl border border-custom hover:border-gold hover:-translate-y-1 transition duration-300 text-center shadow-lg">
+                    <div class="text-5xl mb-4 text-gold">🌱</div>
+                    <h4 class="text-xl font-bold text-white mb-2">ऑर्गेनिक खाद</h4>
+                    <p class="text-gray-400 text-sm">किसानों के लिए जैविक खाद।</p>
+                </div>
+                <!-- सेवा 4 -->
+                <div class="bg-card p-6 rounded-xl border border-custom hover:border-gold hover:-translate-y-1 transition duration-300 text-center shadow-lg">
+                    <div class="text-5xl mb-4 text-gold">🔥</div>
+                    <h4 class="text-xl font-bold text-white mb-2">बायोगैस प्लांट</h4>
+                    <p class="text-gray-400 text-sm">ऊर्जा संरक्षण की पहल।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- दान का निमंत्रण (Call to Action) -->
+        <section class="bg-gradient-to-r from-orange-600 to-amber-500 rounded-3xl p-8 md:p-12 text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 opacity-10 text-9xl m-4"><i class="fas fa-hand-holding-heart"></i></div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 relative z-10">इस पुण्य कार्य में हमारा साथ दें</h2>
+            <p class="text-orange-100 text-lg md:text-xl mb-8 max-w-2xl mx-auto relative z-10">
+                आपका छोटा सा योगदान भी बेसहारा नंदी महाराज के जीवन में बड़ा बदलाव ला सकता है। आप अपने जन्मदिन, विवाह वर्षगांठ या पूर्वजों की स्मृति में गौ सेवा कर सकते हैं।
+            </p>
+            <a href="donate.html" class="inline-block bg-white text-orange-600 px-10 py-4 rounded-full font-bold text-xl hover:bg-gray-100 transition shadow-lg relative z-10">
+                अभी दान करें 🙏
+            </a>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 py-6 text-center border-t border-gray-800">
-        <p>© <span id="year"></span> नंदी गौशाला, लछारसर</p>
-    </footer>
+    <!-- ================= 7. FOOTER LOADER ================= -->
+    <!-- footer.js इस जगह पर फुटर और सोशल मीडिया आइकन्स लोड करेगा -->
+    <div id="footer-container"></div>
 
-    <!-- Firebase SDKs (सभी जरूरी लाइब्रेरीज) -->
+    <!-- ================= 8. SCRIPTS ================= -->
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
     
-    <!-- Custom Scripts -->
-    <script src="firebase-config.js"></script>
-    <script src="app.js"></script>
+    <!-- Custom Scripts (इनका क्रम मिलाना बहुत जरूरी है) -->
+    <script src="firebase-config.js"></script> <!-- सबसे पहले फायरबेस -->
+    <script src="app.js"></script>            <!-- फिर लोडर और नोटिस पॉपअप -->
+    <script src="header.js"></script>         <!-- फिर हेडर -->
+    <script src="footer.js"></script>         <!-- आखिर में फुटर -->
 </body>
 </html>
