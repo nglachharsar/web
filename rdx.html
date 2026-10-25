@@ -2,231 +2,85 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>एडमिन पैनल - नंदी गौशाला</title>
+    <title>प्रीमियम एडमिन पैनल - नंदी गौशाला</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body { background-color: #f3f4f6; font-family: 'Poppins', sans-serif; }
-        .admin-card { transition: all 0.3s ease; }
-        .admin-card:hover { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+        body { background-color: #f8fafc; font-family: 'Poppins', sans-serif; }
+        .glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-4 md:p-8 min-h-screen flex items-center justify-center">
 
-    <div class="max-w-4xl mx-auto bg-white p-6 md:p-8 rounded-xl shadow-lg border border-gray-200 mt-6">
-        
-        <!-- Header -->
-        <div class="text-center mb-8 border-b pb-4">
-            <h1 class="text-3xl font-bold text-orange-600">नंदी गौशाला - एडमिन पैनल</h1>
-            <p class="text-gray-500 mt-1">यहाँ से वेबसाइट का कंटेंट और डोनेशन देखें</p>
+    <div class="max-w-4xl w-full glass-panel rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+        <div class="bg-gradient-to-r from-orange-600 to-amber-500 p-6 text-white text-center">
+            <h1 class="text-3xl font-bold"><i class="fas fa-shield-alt mr-2"></i> एडमिन पैनल</h1>
+            <p class="text-orange-100 mt-2">नंदी गौशाला, लछारसर</p>
         </div>
 
-        <!-- Login Section -->
-        <div id="login-section">
-            <div class="text-center mb-6">
-                <p class="text-lg font-semibold text-gray-700">कृपया लॉगिन करें</p>
-                <p class="text-sm text-gray-500">केवल अधिकृत व्यक्ति ही एडमिन पैनल का उपयोग कर सकते हैं</p>
+        <div class="p-6 md:p-10">
+            <div id="login-section" class="text-center py-10">
+                <div class="text-6xl text-gray-300 mb-6"><i class="fas fa-user-lock"></i></div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">सुरक्षित लॉगिन</h2>
+                <p class="text-gray-500 mb-8">कृपया अपने अधिकृत Google अकाउंट से लॉगिन करें</p>
+                <button id="loginBtn" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-blue-700 transition shadow-lg flex items-center justify-center gap-3 mx-auto">
+                    <i class="fab fa-google"></i> Google से लॉगिन करें
+                </button>
+                <p id="login-msg" class="text-red-500 mt-4 text-sm font-bold"></p>
             </div>
-            <button id="loginBtn" class="w-full md:w-auto mx-auto block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex justify-center items-center gap-2">
-                <i class="fab fa-google"></i> Google से लॉगिन करें
-            </button>
-            <p id="login-msg" class="text-red-500 text-center mt-4 text-sm"></p>
-        </div>
 
-        <!-- Admin Panel Section -->
-        <div id="admin-section" class="hidden">
-            
-            <!-- User Info -->
-            <div class="flex justify-between items-center mb-6 bg-gray-100 p-3 rounded-lg">
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-user-circle text-gray-600 text-xl"></i>
-                    <span id="user-email" class="text-sm font-bold text-gray-700"></span>
+            <div id="admin-section" class="hidden">
+                <div class="flex justify-between items-center bg-gray-50 p-4 rounded-xl mb-8 border border-gray-200">
+                    <div class="flex items-center gap-3 text-gray-700 font-medium">
+                        <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                        <span id="user-email"></span>
+                    </div>
+                    <button id="logoutBtn" class="text-red-500 font-bold hover:text-red-700 transition"><i class="fas fa-sign-out-alt"></i> Logout</button>
                 </div>
-                <button id="logoutBtn" class="text-red-500 text-sm font-bold hover:underline">Logout</button>
-            </div>
-            
-            <!-- Tabs -->
-            <div class="flex border-b mb-6">
-                <button id="tab-content" class="px-4 py-2 font-bold text-orange-600 border-b-2 border-orange-600">वेबसाइट कंटेंट</button>
-                <button id="tab-donations" class="px-4 py-2 font-bold text-gray-500 hover:text-gray-800">दान की लिस्ट</button>
-            </div>
 
-            <!-- Tab 1: Content Form -->
-            <div id="content-tab">
-                <form id="adminForm" class="space-y-5">
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">नोटिस (पॉपअप में दिखेगा)</label>
-                        <textarea id="noticeInput" rows="3" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-orange-500 outline-none" placeholder="जैसे: कल गौशाला में विशेष पूजा होगी..."></textarea>
-                        <p class="text-xs text-gray-500 mt-1">आप यहाँ HTML टैग्स (जैसे &lt;b&gt;, &lt;br&gt;) का भी उपयोग कर सकते हैं।</p>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">गौशाला समाचार (मुख्य पेज पर दिखेगा)</label>
-                        <textarea id="contentInput" rows="6" class="w-full border border-gray-300 rounded-lg p-3 focus:ring-2 focus:ring-orange-500 outline-none" placeholder="यहाँ खबरें या जानकारी लिखें..."></textarea>
-                    </div>
-                    <button type="submit" class="bg-green-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-green-700 transition shadow-md">वेबसाइट पर पब्लिश करें</button>
-                    <p id="save-msg" class="font-bold mt-2"></p>
-                </form>
-            </div>
+                <div class="flex border-b border-gray-200 mb-8">
+                    <button id="tab-content" class="px-6 py-3 font-bold text-orange-600 border-b-2 border-orange-600 transition"><i class="fas fa-edit"></i> कंटेंट</button>
+                    <button id="tab-donations" class="px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition"><i class="fas fa-hand-holding-usd"></i> दान लिस्ट</button>
+                </div>
 
-            <!-- Tab 2: Donations List -->
-            <div id="donations-tab" class="hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-gray-200 text-gray-700">
-                                <th class="p-3 border">दिनांक</th>
-                                <th class="p-3 border">नाम</th>
-                                <th class="p-3 border">राशि (₹)</th>
-                                <th class="p-3 border">संदेश</th>
-                            </tr>
-                        </thead>
-                        <tbody id="donations-list">
-                            <tr><td colspan="4" class="p-3 text-center text-gray-500">लोड हो रहा है...</td></tr>
-                        </tbody>
-                    </table>
+                <div id="content-tab">
+                    <form id="adminForm" class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">नोटिस (पॉपअप में दिखेगा)</label>
+                            <textarea id="noticeInput" rows="3" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-orange-500 outline-none transition"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">समाचार (होम पेज पर दिखेगा)</label>
+                            <textarea id="contentInput" rows="6" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-orange-500 outline-none transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold text-lg hover:bg-green-700 transition shadow-md">वेबसाइट पर पब्लिश करें</button>
+                        <p id="save-msg" class="text-center font-bold"></p>
+                    </form>
+                </div>
+
+                <div id="donations-tab" class="hidden">
+                    <div class="overflow-x-auto rounded-xl border border-gray-200">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-gray-100 text-gray-700 font-bold">
+                                <tr>
+                                    <th class="p-4 border-b">दिनांक</th>
+                                    <th class="p-4 border-b">नाम</th>
+                                    <th class="p-4 border-b">राशि (₹)</th>
+                                    <th class="p-4 border-b">संदेश</th>
+                                </tr>
+                            </thead>
+                            <tbody id="donations-list" class="text-gray-600"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-
-    <script>
-        // Firebase Init
-        const firebaseConfig = {
-            apiKey: "AIzaSyBg0OOgrnmU5Pzao9YCeIb-DVN-zL_GdRU",
-            authDomain: "nglachharsar.firebaseapp.com",
-            projectId: "nglachharsar",
-            storageBucket: "nglachharsar.firebasestorage.app",
-            messagingSenderId: "627559530629",
-            appId: "1:627559530629:web:1b1500d07d9afb29c5a9ec"
-        };
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-        const provider = new firebase.auth.GoogleAuthProvider();
-        const ADMIN_EMAIL = "ngl.raj.in@gmail.com"; // आपका ईमेल
-
-        // Elements
-        const loginSection = document.getElementById('login-section');
-        const adminSection = document.getElementById('admin-section');
-        const userEmailSpan = document.getElementById('user-email');
-        
-        const tabContentBtn = document.getElementById('tab-content');
-        const tabDonationsBtn = document.getElementById('tab-donations');
-        const contentTab = document.getElementById('content-tab');
-        const donationsTab = document.getElementById('donations-tab');
-
-        // Auth Logic
-        document.getElementById('loginBtn').addEventListener('click', () => {
-            auth.signInWithPopup(provider).catch(err => alert(err.message));
-        });
-        document.getElementById('logoutBtn').addEventListener('click', () => auth.signOut());
-
-        auth.onAuthStateChanged(async (user) => {
-            if (user && user.email === ADMIN_EMAIL) {
-                loginSection.classList.add('hidden');
-                adminSection.classList.remove('hidden');
-                userEmailSpan.innerText = "लॉगिन: " + user.email;
-                await loadContentData();
-            } else {
-                loginSection.classList.remove('hidden');
-                adminSection.classList.add('hidden');
-                if (user) {
-                    document.getElementById('login-msg').innerText = "आपके पास एक्सेस नहीं है!";
-                    auth.signOut();
-                }
-            }
-        });
-
-        // Tab Switching Logic
-        tabContentBtn.addEventListener('click', () => {
-            contentTab.classList.remove('hidden');
-            donationsTab.classList.add('hidden');
-            tabContentBtn.className = "px-4 py-2 font-bold text-orange-600 border-b-2 border-orange-600";
-            tabDonationsBtn.className = "px-4 py-2 font-bold text-gray-500 hover:text-gray-800";
-        });
-
-        tabDonationsBtn.addEventListener('click', () => {
-            contentTab.classList.add('hidden');
-            donationsTab.classList.remove('hidden');
-            tabDonationsBtn.className = "px-4 py-2 font-bold text-orange-600 border-b-2 border-orange-600";
-            tabContentBtn.className = "px-4 py-2 font-bold text-gray-500 hover:text-gray-800";
-            loadDonationsData();
-        });
-
-        // Load Content Data
-        async function loadContentData() {
-            const docSnap = await db.collection("siteContent").doc("mainPage").get();
-            if (docSnap.exists) {
-                const data = docSnap.data();
-                document.getElementById('noticeInput').value = data.notice || "";
-                document.getElementById('contentInput').value = data.content || "";
-            }
-        }
-
-        // Save Content
-        document.getElementById('adminForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const msg = document.getElementById('save-msg');
-            msg.innerText = "सेव हो रहा है...";
-            msg.className = "font-bold mt-2 text-blue-600";
-
-            try {
-                await db.collection("siteContent").doc("mainPage").set({
-                    notice: document.getElementById('noticeInput').value,
-                    content: document.getElementById('contentInput').value,
-                    lastUpdated: new Date()
-                });
-                msg.innerText = "✅ सफलतापूर्वक पब्लिश हो गया!";
-                msg.className = "font-bold mt-2 text-green-600";
-            } catch (error) {
-                msg.innerText = "❌ त्रुटि: " + error.message;
-                msg.className = "font-bold mt-2 text-red-600";
-            }
-        });
-
-        // Load Donations Data
-        async function loadDonationsData() {
-            const tbody = document.getElementById('donations-list');
-            tbody.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-gray-500">लोड हो रहा है...</td></tr>`;
-
-            try {
-                const snapshot = await db.collection("donations").orderBy("timestamp", "desc").get();
-                tbody.innerHTML = "";
-                
-                if (snapshot.empty) {
-                    tbody.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-gray-500">अभी तक कोई दान नहीं आया है।</td></tr>`;
-                    return;
-                }
-
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    let dateStr = "अभी-अभी";
-                    if (data.timestamp) {
-                        dateStr = data.timestamp.toDate().toLocaleDateString('hi-IN');
-                    }
-                    
-                    const tr = document.createElement('tr');
-                    tr.className = "border-b hover:bg-gray-50";
-                    tr.innerHTML = `
-                        <td class="p-3 border text-sm">${dateStr}</td>
-                        <td class="p-3 border font-bold">${data.name}</td>
-                        <td class="p-3 border text-green-600 font-bold">₹${data.amount}</td>
-                        <td class="p-3 border text-sm text-gray-600">${data.message || '-'}</td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-
-            } catch (error) {
-                tbody.innerHTML = `<tr><td colspan="4" class="p-3 text-center text-red-500">डेटा लोड करने में त्रुटि: ${error.message}</td></tr>`;
-            }
-        }
-    </script>
+    <script src="firebase-config.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>

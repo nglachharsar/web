@@ -2,7 +2,6 @@
 <html lang="hi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>दान करें - नंदी गौशाला</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -12,138 +11,49 @@
 </head>
 <body class="bg-main text-light">
 
-    <!-- Page Loader -->
-    <div id="page-loader" style="display: none;">
-        <div class="loader-spinner"></div>
-        <p class="mt-4 text-gold font-bold text-xl animate-pulse">लोड हो रहा है...</p>
-    </div>
-
-    <!-- Header -->
-    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
+    <header class="bg-main/95 shadow-lg sticky top-0 z-50 border-b border-custom">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="ngl.svg" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
-                <h1 class="text-xl font-bold text-gold">नंदी गौशाला, लछारसर</h1>
-            </a>
-            <nav class="hidden md:flex gap-6 font-semibold text-white">
-                <a href="index.html" class="hover:text-gold">होम</a>
-                <a href="about.html" class="hover:text-gold">हमारे बारे में</a>
-                <a href="gallery.html" class="hover:text-gold">गैलरी</a>
-                <a href="contact.html" class="hover:text-gold">संपर्क</a>
-            </nav>
-            <a href="donate.html" class="bg-accent text-white px-5 py-2 rounded-full font-bold">दान करें</a>
+            <a href="index.html" class="flex items-center gap-3"><img src="ngl.svg" class="h-12 w-12 bg-white rounded-full p-1" onerror="this.src='ngl.png'"><h1 class="text-xl font-bold text-gold">नंदी गौशाला</h1></a>
+            <a href="index.html" class="text-sm font-bold bg-gray-800 px-4 py-2 rounded-lg hover:bg-gray-700">← होम</a>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-3xl mx-auto px-4 py-16">
-        <h2 class="text-4xl font-bold text-gold mb-8 text-center border-b border-gray-700 pb-4">दान करें</h2>
+    <main class="max-w-2xl mx-auto px-4 py-16">
+        <h2 class="text-4xl font-bold text-gold mb-8 text-center">दान करें</h2>
         
-        <!-- QR and Payment Info -->
-        <div class="bg-card p-8 rounded-2xl border border-custom text-center mb-10 shadow-lg">
-            <img src="qrngl.jpeg" class="w-56 h-56 mx-auto rounded-xl border-4 border-gray-700 mb-4 shadow-md" onerror="this.src='ngl.png'">
-            <p class="text-lg font-bold text-gold mb-2">UPI ID: 9216626445@upi</p>
-            <p class="text-sm text-gray-400 mb-1">खाता धारक: NANDI GO SEWA SANSTHAN</p>
-            <p class="text-sm text-gray-400">बैंक: [यहाँ अपना बैंक का नाम लिखें]</p>
+        <div class="bg-card p-8 rounded-2xl border border-custom text-center mb-8 shadow-lg">
+            <!-- QR Code Link to UPI App -->
+            <a href="upi://pay?pa=9216626445@upi&pn=NANDI%20GO%20SEWA%20SANSTHAN%20LACHHARSAR&cu=INR" class="inline-block relative group cursor-pointer">
+                <img src="qrngl.jpeg" class="w-56 h-56 mx-auto rounded-xl border-4 border-gray-700 shadow-md group-hover:scale-105 transition" onerror="this.src='ngl.png'">
+            </a>
+            <p class="text-lg font-bold text-gold mt-4">UPI ID: 9216626445@upi</p>
+            <p class="text-sm text-gray-400">QR कोड स्कैन करें या तस्वीर पर क्लिक करें</p>
+            <p class="text-sm text-gray-400 mt-1">खाता धारक: NANDI GO SEWA SANSTHAN LACHHARSAR</p>
         </div>
 
-        <!-- Online Donation Form -->
-        <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
-            <h3 class="text-2xl font-bold text-white mb-6 text-center">दान विवरण दर्ज करें & रसीद डाउनलोड करें</h3>
-            <form id="donationForm" class="space-y-5">
-                <div>
-                    <label class="block text-sm font-bold text-gray-400 mb-2">आपका पूरा नाम *</label>
-                    <input type="text" id="donorName" required placeholder="जैसे: राहुल शर्मा" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-400 mb-2">दान राशि (₹) *</label>
-                    <input type="number" id="donationAmount" required min="1" placeholder="जैसे: 500" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-400 mb-2">संदेश (वैकल्पिक)</label>
-                    <textarea id="donationMessage" rows="3" placeholder="कोई संदेश लिखें..." class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold"></textarea>
-                </div>
-                <button type="submit" class="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-orange-700 transition shadow-lg text-lg">दान दर्ज करें & रसीद पाएं</button>
-            </form>
-            <p id="formStatus" class="text-center font-bold mt-4 hidden"></p>
-        </div>
+        <form id="donationForm" class="bg-card p-8 rounded-2xl border border-custom space-y-4">
+            <input type="text" id="donorName" placeholder="आपका नाम" required class="w-full bg-gray-800 border border-gray-600 p-3 rounded-lg text-white outline-none focus:border-gold">
+            <input type="number" id="donationAmount" placeholder="राशि (₹)" required class="w-full bg-gray-800 border border-gray-600 p-3 rounded-lg text-white outline-none focus:border-gold">
+            <textarea id="donationMessage" placeholder="संदेश (वैकल्पिक)" rows="2" class="w-full bg-gray-800 border border-gray-600 p-3 rounded-lg text-white outline-none focus:border-gold"></textarea>
+            <button type="submit" class="w-full bg-accent text-white font-bold py-3 rounded-lg hover:bg-orange-700">दान दर्ज करें & रसीद पाएं</button>
+        </form>
+        <p id="formStatus" class="text-center font-bold mt-4 hidden"></p>
     </main>
 
-    <!-- Hidden Receipt Template (For PDF Generation) -->
-    <div id="receipt-template" class="hidden" style="width: 800px; padding: 40px; background: #fff; color: #000; font-family: sans-serif;">
-        <div style="text-align: center; border-bottom: 2px solid #2d6a4f; padding-bottom: 20px; margin-bottom: 20px;">
-            <h1 style="color: #2d6a4f; margin: 0;">नंदी गौशाला, लछारसर</h1>
-            <p style="margin: 5px 0; color: #555;">रतनगढ़, चूरू (राजस्थान)</p>
-            <h2 style="color: #ea580c; margin-top: 10px;">दान प्रमाण पत्र / Donation Receipt</h2>
-        </div>
-        <div style="margin-bottom: 20px; font-size: 18px;">
-            <p><strong>दानकर्ता का नाम:</strong> <span id="receipt-name"></span></p>
-            <p><strong>दान राशि:</strong> ₹ <span id="receipt-amount"></span></p>
-            <p><strong>दान का संदेश:</strong> <span id="receipt-message"></span></p>
-            <p><strong>दिनांक:</strong> <span id="receipt-date"></span></p>
-        </div>
-        <div style="border-top: 1px dashed #ccc; padding-top: 20px; text-align: center; color: #777; font-size: 14px;">
-            <p>यह रसीद आपके द्वारा किए गए दान की डिजिटल पुष्टि है।</p>
-            <p>गौ सेवा ही परमो धर्मः 🙏</p>
-        </div>
+    <div id="receipt-template" class="hidden" style="width: 800px; padding: 40px; background: #fff; color:#000;">
+        <h1 style="color: #2d6a4f; text-align:center;">नंदी गौशाला, लछारसर</h1>
+        <h2 style="text-align:center;">दान प्रमाण पत्र</h2>
+        <p><strong>नाम:</strong> <span id="receipt-name"></span></p>
+        <p><strong>राशि:</strong> ₹<span id="receipt-amount"></span></p>
+        <p><strong>संदेश:</strong> <span id="receipt-message"></span></p>
+        <p><strong>दिनांक:</strong> <span id="receipt-date"></span></p>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gray-950 text-gray-400 py-10 border-t border-gray-800 mt-12 text-center">
-        <p class="text-xl font-bold text-gold mb-2">गावो विश्वस्य मातरः</p>
-        <p class="text-sm text-gray-500">© 2026 नंदी गौशाला, लछारसर — सर्वाधिकार सुरक्षित</p>
-    </footer>
+    <footer class="bg-gray-950 py-6 text-center mt-10 border-t border-gray-800"><p>© 2025 नंदी गौशाला</p></footer>
 
-    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-    <script src="script.js"></script>
-
-    <script>
-        // Donation Form Logic
-        const donationForm = document.getElementById('donationForm');
-        if (donationForm) {
-            donationForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('donorName').value;
-                const amount = document.getElementById('donationAmount').value;
-                const message = document.getElementById('donationMessage').value;
-                const date = new Date().toLocaleDateString('hi-IN');
-                const status = document.getElementById('formStatus');
-
-                status.innerText = "रसीद बन रही है...";
-                status.className = "text-center font-bold mt-4 text-blue-400 block";
-
-                // Save to Firestore
-                db.collection('donations').add({ 
-                    name, amount, message, 
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp() 
-                })
-                .then(() => {
-                    const { jsPDF } = window.jspdf;
-                    document.getElementById('receipt-name').innerText = name;
-                    document.getElementById('receipt-amount').innerText = amount;
-                    document.getElementById('receipt-message').innerText = message || "कोई संदेश नहीं";
-                    document.getElementById('receipt-date').innerText = date;
-                    
-                    const el = document.getElementById('receipt-template');
-                    el.classList.remove('hidden');
-                    html2canvas(el).then(canvas => {
-                        const pdf = new jsPDF('p', 'mm', 'a4');
-                        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 190, 0);
-                        pdf.save(`Receipt_${name.replace(/\s+/g, '_')}.pdf`);
-                        el.classList.add('hidden');
-                        
-                        status.innerText = "✅ रसीद डाउनलोड हो गई!";
-                        status.className = "text-center font-bold mt-4 text-green-500 block";
-                        donationForm.reset();
-                    });
-                }).catch(err => {
-                    status.innerText = "❌ त्रुटि: " + err.message;
-                    status.className = "text-center font-bold mt-4 text-red-500 block";
-                });
-            });
-        }
-    </script>
+    <script src="firebase-config.js"></script>
+    <script src="donate.js"></script>
 </body>
 </html>
