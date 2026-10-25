@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>हम क्या करते हैं - नंदी गौशाला लछारसर</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased bg-main text-light">
+
+    <!-- Page Loader -->
+    <div id="page-loader" style="display: none;">
+        <div class="loader-spinner"></div>
+        <p class="mt-4 text-gold font-bold text-xl animate-pulse">लोड हो रहा है...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="ngl.svg" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
+                <div>
+                    <h1 class="text-2xl font-bold text-gold leading-tight">नंदी गौशाला, लछारसर</h1>
+                    <p class="text-sm text-muted font-medium">रतनगढ़, चूरू (राजस्थान)</p>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-white">
+                <a href="index.html" class="hover:text-gold transition">होम</a>
+                <a href="about.html" class="hover:text-gold transition">हमारे बारे में</a>
+                <a href="gallery.html" class="hover:text-gold transition">गैलरी</a>
+                <a href="contact.html" class="hover:text-gold transition">संपर्क</a>
+            </nav>
+            <a href="donate.html" class="bg-accent text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 shadow-lg transition">दान करें 🙏</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gold mb-4">हम क्या करते हैं</h2>
+            <p class="text-gray-400 text-lg">गौ सेवा के हमारे प्रमुख कार्य</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Service 1 -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
+                <div class="text-5xl mb-4">🚜</div>
+                <h3 class="text-2xl font-bold text-gold mb-3">उत्तम चारा व्यवस्था</h3>
+                <p class="text-gray-300 leading-relaxed">हम नंदी महाराज के लिए दैनिक रूप से पौष्टिक हरा चारा, सूखा चारा (कतरब) और संतुलित आहार की व्यवस्था करते हैं। उनके स्वास्थ्य के लिए उच्च गुणवत्ता वाला चारा सुनिश्चित किया जाता है।</p>
+            </div>
+            <!-- Service 2 -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
+                <div class="text-5xl mb-4">🩺</div>
+                <h3 class="text-2xl font-bold text-gold mb-3">निःशुल्क चिकित्सा</h3>
+                <p class="text-gray-300 leading-relaxed">गौशाला में घायल, बीमार या वृद्ध पशुओं के लिए प्राथमिक उपचार और पशु चिकित्सकों की नियमित जाँच की सुविधा है। हम उन्हें स्वस्थ होने तक विशेष देखभाल प्रदान करते हैं।</p>
+            </div>
+            <!-- Service 3 -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
+                <div class="text-5xl mb-4">🏗️</div>
+                <h3 class="text-2xl font-bold text-gold mb-3">सुरक्षित आश्रय</h3>
+                <p class="text-gray-300 leading-relaxed">राजस्थान की कड़कती ठंड, तेज धूप और आंधी से बचाने के लिए हमने मजबूत और हवादार शेड का निर्माण किया है। यहाँ पशुओं के लिए खुला घूमने की जगह भी है।</p>
+            </div>
+            <!-- Service 4 -->
+            <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
+                <div class="text-5xl mb-4">🌱</div>
+                <h3 class="text-2xl font-bold text-gold mb-3">जैविक खाद उत्पादन</h3>
+                <p class="text-gray-300 leading-relaxed">हम गोबर से जैविक खाद तैयार करते हैं और इसे स्थानीय किसानों को सस्ती दर पर उपलब्ध कराते हैं। इससे रासायनिक खाद का उपयोग कम होता है और पर्यावरण को लाभ मिलता है।</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xl font-bold text-gold mb-2">गावो विश्वस्य मातरः</p>
+            <p class="text-sm text-gray-500">© 2026 नंदी गौशाला, लछारसर — सर्वाधिकार सुरक्षित</p>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

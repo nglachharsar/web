@@ -1,272 +1,176 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="hi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>नंदी गौशाला लछारसर - गौ सेवा ही परम धर्म है</title>
-
-    <!-- ================= SIMPLE ORIGINAL FAVICON SETUP ================= -->
-    <!-- आप बैकग्राउंड हटाकर इसे ngl.png या ngl.jpg से बदल सकते हैं -->
-    <link rel="icon" type="image/png" href="ngl1.png">
-    <link rel="apple-touch-icon" href="ngl1.png">
-    <meta name="theme-color" content="#ea580c">
-    <!-- =============================================================== -->
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap');
-        body { font-family: 'Noto Sans Devanagari', sans-serif; }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-amber-50/40 text-gray-800 antialiased">
+<body class="antialiased bg-main text-light">
 
-    <!-- Top Banner -->
-    <div class="bg-amber-500 text-white text-center py-2 px-4 text-sm font-medium shadow-sm">
-        🚩 बेसहारा और बीमार नंदी महाराज की सेवा में अपना योगदान दें।
+    <!-- Page Loader -->
+    <div id="page-loader" style="display: none;">
+        <div class="loader-spinner"></div>
+        <p class="mt-4 text-gold font-bold text-xl animate-pulse">लोड हो रहा है...</p>
     </div>
 
-    <!-- Navigation Bar -->
-    <header class="bg-orange-600 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3 text-center sm:text-left">
-                <!-- हेडर लोगो -->
-                <img src="ngl.svg" alt="Nandi Gaushala Logo" class="h-12 w-12 bg-white rounded-full p-1 object-cover shadow-sm" onerror="this.src='ngl.jpg'">
+    <!-- Notice Popup -->
+    <div id="notice-overlay"></div>
+    <div id="notice-popup" class="p-8 text-center">
+        <h3 class="text-2xl font-bold text-gold mb-4">📢 महत्वपूर्ण सूचना</h3>
+        <div id="notice-text" class="text-gray-200 text-lg mb-6 leading-relaxed"></div>
+        <button onclick="closeNotice()" class="bg-accent text-white px-8 py-2 rounded-full font-bold hover:bg-orange-700 transition">समझ गया, बंद करें</button>
+    </div>
+    <button id="notice-minimized" onclick="openNotice()" class="bg-accent text-white h-14 w-14 flex items-center justify-center text-2xl">
+        <i class="fas fa-bell"></i>
+    </button>
+
+    <!-- Top Bar -->
+    <div class="bg-gray-900 text-xs py-2 text-center text-gray-400 border-b border-gray-800">
+        <p>📞 हेल्पलाइन: +91 92166 26445 | ✉️ info@ngss.mywire.org</p>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="ngl.svg" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
                 <div>
-                    <h1 class="text-2xl sm:text-3xl font-bold tracking-wide">नंदी गौशाला, लछारसर</h1>
-                    <p class="text-xs sm:text-sm text-orange-100 font-medium">रतनगढ़, चूरू (राजस्थान)</p>
+                    <h1 class="text-2xl font-bold text-gold leading-tight">नंदी गौशाला, लछारसर</h1>
+                    <p class="text-sm text-muted font-medium">रतनगढ़, चूरू (राजस्थान)</p>
                 </div>
-            </div>
-            <nav class="flex items-center gap-4 text-sm font-medium">
-                <a href="#about" class="hover:text-amber-200 transition hidden sm:block">हमारे बारे में</a>
-                <a href="#donate" class="bg-amber-500 text-orange-950 px-4 py-1.5 rounded-full font-bold hover:bg-amber-400 transition shadow">दान दें</a>
-                <div id="auth-container">
-                    <button id="loginBtn" class="bg-white text-orange-600 px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition shadow flex items-center gap-2">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.761H12.545z"/></svg>
-                        लॉगिन
-                    </button>
-                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-white">
+                <a href="index.html" class="text-gold">होम</a>
+                <a href="about.html" class="hover:text-gold transition">हमारे बारे में</a>
+                <a href="gallery.html" class="hover:text-gold transition">गैलरी</a>
+                <a href="contact.html" class="hover:text-gold transition">संपर्क</a>
             </nav>
+            <a href="donate.html" class="bg-accent text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 shadow-lg transition">दान करें 🙏</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-orange-600 to-orange-500 text-white text-center py-16 px-4">
-        <div class="max-w-3xl mx-auto">
-            <span class="bg-orange-700/60 text-amber-300 border border-orange-400/30 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider">परमार्थ कार्य</span>
-            <h2 class="text-3xl sm:text-5xl font-bold mt-4 mb-6 leading-tight">नंदी महाराज की सेवा ही <br class="hidden sm:inline"><span class="text-amber-300">सच्ची ईश्वर सेवा</span> है</h2>
-            <p class="text-base sm:text-xl text-orange-50/90 max-w-2xl mx-auto leading-relaxed">लछारसर में बेसहारा, वृद्ध, असहाय और बीमार नंदी महाराज (बैलों) के आश्रय, उत्तम चारे, पानी और उपचार के लिए संचालित एक पावन धाम।</p>
+    <section class="hero-bg text-white text-center py-28 px-4 relative">
+        <div class="max-w-4xl mx-auto relative z-10 fade-in">
+            <span class="bg-white/10 border border-gold/30 text-gold px-5 py-2 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg backdrop-blur-sm">परमार्थ कार्य</span>
+            <h2 class="text-4xl sm:text-6xl font-bold mt-6 mb-6 leading-tight drop-shadow-2xl">गौ सेवा ही <br class="hidden sm:inline"><span class="text-gold">परमो धर्मः</span></h2>
+            <p class="text-lg sm:text-2xl text-gray-300 max-w-2xl mx-auto leading-relaxed drop-shadow-md mb-10">
+                लछारसर की इस पावन धरा पर, हम बेसहारा, वृद्ध और बीमार नंदी महाराज (बैलों) को आश्रय, भोजन और चिकित्सा प्रदान करते हैं।
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="donate.html" class="bg-accent text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-orange-700 hover:shadow-xl hover:-translate-y-1 transition-all shadow-lg">अभी दान करें</a>
+                <a href="about.html" class="bg-white text-gray-900 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-200 hover:shadow-xl hover:-translate-y-1 transition-all shadow-lg">और जानें</a>
+            </div>
         </div>
     </section>
 
+    <!-- Trust Badges -->
+    <div class="bg-card border border-custom py-5 shadow-xl relative z-20 -mt-8 mx-4 md:mx-auto max-w-5xl rounded-2xl">
+        <div class="flex flex-wrap justify-center gap-8 text-sm md:text-base text-gray-200 font-semibold px-4">
+            <span class="flex items-center gap-2"><i class="fas fa-certificate text-gold text-lg"></i> सरकारी रजिस्टर्ड संस्था</span>
+            <span class="flex items-center gap-2"><i class="fas fa-file-invoice-dollar text-gold text-lg"></i> 80G टैक्स छूट उपलब्ध</span>
+            <span class="flex items-center gap-2"><i class="fas fa-check-circle text-gold text-lg"></i> 100% पारदर्शी दान</span>
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <main class="max-w-5xl mx-auto px-4 py-12 space-y-12">
-
-        <!-- About Section -->
-        <section id="about" class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-orange-100/50">
-            <h3 class="text-2xl font-bold text-orange-600 mb-4 border-b border-orange-100 pb-2 flex items-center gap-2"><span>ℹ️</span> हमारे बारे में</h3>
-            <p class="text-gray-700 leading-relaxed text-base sm:text-lg">लछारसर गांव की इस पावन धरा पर स्थापित <strong>नंदी गौशाला</strong> पूर्ण रूप से नंदी महाराज की नि:स्वार्थ सेवा के लिए समर्पित है। हमारा मुख्य उद्देश्य उन बेसहारा नंदी देवों को सुरक्षित और सम्मानजनक जीवन देना है।</p>
+    <main class="max-w-7xl mx-auto px-4 py-16 space-y-20">
+        
+        <!-- Dynamic News -->
+        <section class="bg-card p-6 md:p-8 rounded-2xl shadow-sm border border-custom relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-gold"></div>
+            <h3 class="text-2xl font-bold text-gold mb-4 flex items-center gap-2"><span>📰</span> गौशाला समाचार</h3>
+            <div id="page-content" class="text-gray-200 leading-relaxed text-lg font-medium">
+                <p>लोड हो रहा है...</p>
+            </div>
         </section>
 
-        <!-- Donation Section -->
-        <section id="donate" class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-orange-100/50">
-            <h3 class="text-2xl font-bold text-orange-600 mb-4 border-b border-orange-100 pb-2 flex items-center gap-2"><span>💰</span> सहयोग एवं दान की अपील</h3>
-            <p class="text-gray-700 mb-8 text-base sm:text-lg">यह विशाल सेवा कार्य आप जैसे दानदाताओं के सहयोग से ही संभव हो पा रहा है।</p>
-
-            <!-- Payment / QR Details Box -->
-            <div class="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-dashed border-orange-300 p-6 sm:p-8 rounded-2xl max-w-2xl mx-auto shadow-inner mb-8">
-                <div class="text-center mb-6">
-                    <span class="bg-orange-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase">Official Payment Details</span>
-                    <h4 class="text-xl font-bold text-orange-900 mt-2">दान भेजने के लिए क्लिक करें</h4>
-                </div>
-
-                <!-- QR Code with Clickable Link -->
-                <div class="flex flex-col items-center justify-center mb-6">
-                    <a href="upi://pay?pa=9216626445@upi&pn=NANDI%20GO%20SEWA%20SANSTHAN%20LACHHARSAR&cu=INR" class="block relative group cursor-pointer">
-                        <img src="qrngl.jpeg" alt="Donation QR Code" class="w-48 h-48 sm:w-64 sm:h-64 object-contain rounded-xl shadow-md border-4 border-white bg-white group-hover:scale-105 transition duration-300">
-                        <div class="absolute inset-0 bg-black/40 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                            <span class="text-white font-bold text-lg bg-orange-600 px-4 py-2 rounded-lg">पेमेंट ऐप खोलें</span>
-                        </div>
-                    </a>
-                    
-                    <p class="text-sm text-gray-600 mt-3 font-medium text-center">QR स्कैन करें या <b>तस्वीर पर क्लिक करें</b></p>
-                    
-                    <!-- Download QR Button -->
-                    <a href="qrngl.jpeg" download="Nandi_Gaushala_QR" class="mt-3 text-sm text-orange-600 hover:text-orange-800 font-bold underline flex items-center gap-1">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        QR कोड डाउनलोड करें
-                    </a>
-                </div>
-
-                <!-- UPI ID -->
-                <div class="text-center mb-6">
-                    <p class="text-sm font-bold text-orange-800 uppercase tracking-wide mb-1">या UPI ID पर भेजें</p>
-                    <div class="bg-white border border-orange-200 rounded-xl py-2 px-6 inline-block shadow-sm">
-                        <span class="text-lg sm:text-xl font-mono font-bold text-orange-600 tracking-wider">9216626445@upi</span>
-                    </div>
-                </div>
-
-                <!-- Account Holder Name Only -->
-                <div class="text-center border-t border-orange-200/60 pt-4 text-gray-700">
-                    <span class="text-gray-500 block text-xs uppercase font-bold mb-1">खाता धारक का नाम</span>
-                    <strong class="text-gray-900 text-lg">NANDI GO SEWA SANSTHAN LACHHARSAR</strong>
-                </div>
+        <!-- About Short Info -->
+        <section class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-3xl font-bold text-gold mb-4">हमारा उद्देश्य</h3>
+                <p class="text-gray-300 text-lg leading-relaxed mb-6">लछारसर गाँव की इस पावन धरा पर स्थापित नंदी गौशाला पूर्ण रूप से नंदी महाराज की नि:स्वार्थ सेवा के लिए समर्पित है। हमारा उद्देश्य उन बेसहारा पशुओं को सुरक्षित जीवन देना है, जो सड़कों पर दुर्घटनाओं या बीमारी का शिकार होते हैं।</p>
+                <a href="about.html" class="inline-block bg-gold text-gray-900 px-6 py-2 rounded-full font-bold hover:bg-yellow-500 transition">पूरी कहानी पढ़ें →</a>
             </div>
-
-            <!-- Online Donation Form -->
-            <div id="donationFormContainer" class="hidden bg-white border border-orange-200 p-6 rounded-xl shadow-md max-w-2xl mx-auto">
-                <h4 class="text-lg font-bold text-orange-800 mb-4 text-center">दान विवरण रिकॉर्ड करें (वैकल्पिक)</h4>
-                <form id="donationForm" class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">आपका नाम</label>
-                        <input type="text" id="donorName" required class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">दान राशि (₹)</label>
-                        <input type="number" id="donationAmount" required min="1" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700">संदेश (वैकल्पिक)</label>
-                        <textarea id="donationMessage" rows="2" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-500 focus:border-orange-500"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-orange-600 text-white py-2 px-4 rounded-md hover:bg-orange-700 transition font-bold">विवरण सबमिट करें</button>
-                </form>
-                <p id="formStatus" class="text-center text-sm mt-3 hidden"></p>
+            <div class="bg-gray-800 h-80 rounded-2xl flex items-center justify-center border-2 border-gray-700 shadow-lg">
+                <span class="text-gray-500 font-bold">यहाँ गौशाला की फोटो लगाएं</span>
             </div>
-            <p class="text-center text-sm text-gray-500 mt-4" id="loginPrompt">दान विवरण दर्ज करने के लिए कृपया ऊपर दिए गए बटन से लॉगिन करें।</p>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-orange-100/50">
-            <h3 class="text-2xl font-bold text-orange-600 mb-4 border-b border-orange-100 pb-2 flex items-center gap-2"><span>📞</span> संपर्क सूत्र</h3>
-            <div class="grid sm:grid-cols-2 gap-6 text-base sm:text-lg text-gray-700">
-                <div class="space-y-3">
-                    <p class="flex items-start gap-2"><span class="text-orange-600">📍</span><span><strong>पता:</strong> नंदी गौशाला परिसर, ग्राम - लछारसर, तहसील - रतनगढ़, जिला - चूरू, राजस्थान</span></p>
+        <!-- Services Section -->
+        <section>
+            <h3 class="text-3xl font-bold text-gold mb-8 text-center">हमारी सेवाएँ</h3>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-card p-6 rounded-xl border border-custom hover:border-gold transition">
+                    <div class="text-4xl mb-4">🚜</div>
+                    <h4 class="text-xl font-bold text-white mb-2">उत्तम चारा</h4>
+                    <p class="text-gray-400">पौष्टिक हरा और सूखा चारा।</p>
                 </div>
-                <div class="space-y-3 sm:border-l sm:border-orange-100 sm:pl-6">
-                    <p class="flex items-center gap-2"><span class="text-orange-600">📞</span><span><strong>मोबाइल:</strong> <a href="tel:+919216626445" class="text-orange-600 font-bold hover:underline">+91 92166 26445</a></span></p>
-                    <p class="flex items-center gap-2"><span class="text-orange-600">✉️</span><span><strong>ईमेल:</strong> <a href="mailto:info@ngl.camdvr.org" class="text-orange-600 font-bold hover:underline">info@ngl.camdvr.org</a></span></p>
+                <div class="bg-card p-6 rounded-xl border border-custom hover:border-gold transition">
+                    <div class="text-4xl mb-4">🩺</div>
+                    <h4 class="text-xl font-bold text-white mb-2">निःशुल्क चिकित्सा</h4>
+                    <p class="text-gray-400">घायल पशुओं का मुफ्त इलाज।</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl border border-custom hover:border-gold transition">
+                    <div class="text-4xl mb-4">🌱</div>
+                    <h4 class="text-xl font-bold text-white mb-2">ऑर्गेनिक खाद</h4>
+                    <p class="text-gray-400">किसानों के लिए जैविक खाद।</p>
+                </div>
+                <div class="bg-card p-6 rounded-xl border border-custom hover:border-gold transition">
+                    <div class="text-4xl mb-4">🔥</div>
+                    <h4 class="text-xl font-bold text-white mb-2">बायोगैस प्लांट</h4>
+                    <p class="text-gray-400">ऊर्जा संरक्षण की पहल।</p>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-orange-900 text-orange-100 text-center py-6 px-4 mt-12">
-        <p class="text-sm">© 2025 नंदी गौशाला, लछारसर — गौ सेवा ही परम धर्म है 🐂</p>
+    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gold mb-4">नंदी गौशाला</h2>
+                <p class="text-sm leading-relaxed">गौ सेवा ही परमो धर्मः। हमारा उद्देश्य बेसहारा पशुओं की सेवा करना और पर्यावरण संरक्षण में योगदान देना है।</p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-white mb-4">ज़रूरी लिंक्स</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="about.html" class="hover:text-gold">हमारे बारे में</a></li>
+                    <li><a href="gallery.html" class="hover:text-gold">गैलरी</a></li>
+                    <li><a href="donate.html" class="hover:text-gold">दान करें</a></li>
+                    <li><a href="contact.html" class="hover:text-gold">संपर्क</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-white mb-4">पॉलिसी</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="privacy.html" class="hover:text-gold">प्राइवेसी पॉलिसी</a></li>
+                    <li><a href="terms.html" class="hover:text-gold">नियम एवं शर्तें</a></li>
+                    <li><a href="disclaimer.html" class="hover:text-gold">डिस्क्लेमर</a></li>
+                    <li><a href="what-we-do.html" class="hover:text-gold">हम क्या करते हैं</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold text-white mb-4">सोशल मीडिया</h3>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://www.instagram.com/nandi_goshala/" target="_blank" class="social-icon insta"><svg viewBox="0 0 24 24" fill="url(#insta-grad)" class="w-5 h-5"><defs><linearGradient id="insta-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                    <a href="https://x.com/Nandi_Goshala" target="_blank" class="social-icon x-twitter"><svg viewBox="0 0 24 24" fill="#FFFFFF" class="w-4 h-4"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="https://www.facebook.com/profile.php?id=61596008844708" target="_blank" class="social-icon facebook"><svg viewBox="0 0 24 24" fill="#1877F2" class="w-4 h-4"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="https://www.youtube.com/@Nandi_Goshala" target="_blank" class="social-icon youtube"><svg viewBox="0 0 24 24" fill="#FF0000" class="w-5 h-5"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    <a href="https://chat.whatsapp.com/EMFhcIT2Q9F4qT4dLbeI2X" target="_blank" class="social-icon whatsapp"><svg viewBox="0 0 24 24" fill="#25D366" class="w-5 h-5"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-8 pt-6 border-t border-gray-800 text-sm">
+            © <span id="year"></span> नंदी गौशाला, लछारसर — सर्वाधिकार सुरक्षित
+        </div>
     </footer>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-
-    <script>
-        // Firebase Configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyBg0OOgrnmU5Pzao9YCeIb-DVN-zL_GdRU",
-            authDomain: "nglachharsar.firebaseapp.com",
-            projectId: "nglachharsar",
-            storageBucket: "nglachharsar.firebasestorage.app",
-            messagingSenderId: "627559530629",
-            appId: "1:627559530629:web:1b1500d07d9afb29c5a9ec",
-            measurementId: "G-YSXYZSRKJX"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-        const provider = new firebase.auth.GoogleAuthProvider();
-
-        // UI Elements
-        const authContainer = document.getElementById('auth-container');
-        const donationFormContainer = document.getElementById('donationFormContainer');
-        const loginPrompt = document.getElementById('loginPrompt');
-        const donationForm = document.getElementById('donationForm');
-        const formStatus = document.getElementById('formStatus');
-
-        // Google Login Logic
-        const handleLogin = () => {
-            auth.signInWithPopup(provider)
-                .catch((error) => {
-                    console.error("Login Error:", error.message);
-                    alert("लॉगिन में समस्या आई: " + error.message);
-                });
-        };
-
-        // Auth State Change
-        auth.onAuthStateChanged((user) => {
-            if (user) {
-                // User logged in
-                authContainer.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <span class="text-sm hidden sm:block text-orange-100">${user.displayName || user.email}</span>
-                        <button id="logoutBtn" class="bg-white text-orange-600 px-3 py-1 rounded-full text-xs font-bold hover:bg-gray-100 transition shadow">Logout</button>
-                    </div>
-                `;
-                
-                donationFormContainer.classList.remove('hidden');
-                loginPrompt.classList.add('hidden');
-                document.getElementById('donorName').value = user.displayName || '';
-
-                document.getElementById('logoutBtn').addEventListener('click', () => auth.signOut());
-
-            } else {
-                // User logged out
-                authContainer.innerHTML = `
-                    <button id="loginBtn" class="bg-white text-orange-600 px-4 py-1.5 rounded-full font-bold hover:bg-gray-100 transition shadow flex items-center gap-2">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.761H12.545z"/></svg>
-                        लॉगिन
-                    </button>
-                `;
-                
-                document.getElementById('loginBtn').addEventListener('click', handleLogin);
-                donationFormContainer.classList.add('hidden');
-                loginPrompt.classList.remove('hidden');
-            }
-        });
-
-        // Donation Form Submit
-        donationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const name = document.getElementById('donorName').value;
-            const amount = parseFloat(document.getElementById('donationAmount').value);
-            const message = document.getElementById('donationMessage').value;
-            const user = auth.currentUser;
-
-            if (!user) {
-                alert("कृपया पहले लॉगिन करें!");
-                return;
-            }
-
-            formStatus.textContent = "सबमिट हो रहा है...";
-            formStatus.className = "text-center text-sm mt-3 text-blue-600 block";
-
-            // Save to Firestore
-            db.collection('donations').add({
-                name: name,
-                amount: amount,
-                message: message,
-                email: user.email,
-                uid: user.uid,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                status: "pending"
-            })
-            .then(() => {
-                formStatus.textContent = "✅ आपका दान विवरण सफलतापूर्वक दर्ज हो गया! धन्यवाद।";
-                formStatus.className = "text-center text-sm mt-3 text-green-600 block font-bold";
-                donationForm.reset();
-                document.getElementById('donorName').value = user.displayName || '';
-            })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-                formStatus.textContent = "❌ त्रुटि: " + error.message;
-                formStatus.className = "text-center text-sm mt-3 text-red-600 block font-bold";
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>संपर्क करें - नंदी गौशाला</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="antialiased bg-main text-light">
+    <header class="bg-main/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-custom">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="ngl.svg" alt="Logo" class="h-14 w-14 bg-white rounded-full p-1 border-2 border-gold" onerror="this.src='ngl.png'">
+                <h1 class="text-2xl font-bold text-gold">नंदी गौशाला, लछारसर</h1>
+            </a>
+            <nav class="hidden md:flex items-center gap-6 text-base font-semibold text-white">
+                <a href="index.html" class="hover:text-gold transition">होम</a>
+                <a href="about.html" class="hover:text-gold transition">हमारे बारे में</a>
+                <a href="gallery.html" class="hover:text-gold transition">गैलरी</a>
+                <a href="contact.html" class="hover:text-gold transition text-gold">संपर्क</a>
+            </nav>
+            <a href="donate.html" class="bg-accent text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 transition">दान करें 🙏</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-16">
+        <h2 class="text-4xl font-bold text-gold mb-8 text-center">संपर्क करें</h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-card p-8 rounded-2xl border border-custom space-y-6">
+                <h3 class="text-2xl font-bold text-white mb-4">पता एवं विवरण</h3>
+                <p class="flex items-start gap-4"><i class="fas fa-map-marker-alt text-gold mt-1"></i> <span>नंदी गौशाला परिसर, ग्राम - लछारसर, तहसील - रतनगढ़, जिला - चूरू (राजस्थान) - 331802</span></p>
+                <p class="flex items-center gap-4"><i class="fas fa-phone text-gold"></i> <a href="tel:9216626445" class="hover:underline">+91 92166 26445</a></p>
+                <p class="flex items-center gap-4"><i class="fas fa-envelope text-gold"></i> <a href="mailto:info@ngss.mywire.org" class="hover:underline">info@ngss.mywire.org</a></p>
+                <p class="flex items-center gap-4"><i class="fab fa-whatsapp text-green-500 text-xl"></i> <a href="https://wa.me/919216626445" target="_blank" class="hover:underline">WhatsApp पर चैट करें</a></p>
+            </div>
+            
+            <div class="bg-card p-8 rounded-2xl border border-custom">
+                <h3 class="text-2xl font-bold text-white mb-4">हमें संदेश भेजें</h3>
+                <form class="space-y-4">
+                    <input type="text" placeholder="आपका नाम" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold">
+                    <input type="tel" placeholder="मोबाइल नंबर" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold">
+                    <textarea rows="4" placeholder="आपका संदेश" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold"></textarea>
+                    <button type="button" class="w-full bg-gold text-gray-900 font-bold py-3 rounded-lg hover:bg-yellow-500 transition">संदेश भेजें</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-950 text-gray-400 py-6 text-center border-t border-gray-800 mt-10">
+        <p>© 2026 नंदी गौशाला, लछारसर</p>
+    </footer>
+</body>
+</html>
