@@ -1,8 +1,71 @@
 // ==========================================
-// header.js - सभी पेजों के लिए कॉमन हेडर
+// header.js - सभी पेजों के लिए कॉमन हेडर, SEO और फेविकॉन
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // ==========================================
+    // 1. फेविकॉन और SEO टैग्स को हेड में जोड़ना
+    // ==========================================
+    if (!document.querySelector('link[rel="icon"]')) {
+        const favicon = document.createElement('link');
+        favicon.rel = 'icon';
+        favicon.type = 'image/svg+xml';
+        favicon.href = 'ngl.svg';
+        document.head.appendChild(favicon);
+
+        const appleFavicon = document.createElement('link');
+        appleFavicon.rel = 'apple-touch-icon';
+        appleFavicon.href = 'ngl.png';
+        document.head.appendChild(appleFavicon);
+    }
+
+    // Schema Markup (Google Search के लिए)
+    if (!document.getElementById('schema-markup')) {
+        const schemaScript = document.createElement('script');
+        schemaScript.id = 'schema-markup';
+        schemaScript.type = 'application/ld+json';
+        
+        const schemaData = {
+          "@context": "https://schema.org",
+          "@type": "AnimalShelter",
+          "name": "नंदी गौशाला, लछारसर",
+          "alternateName": "Nandi Go Sewa Sansthan Lachharsar",
+          "url": "https://www.ngssl.mywire.org/",
+          "logo": "https://www.ngssl.mywire.org/ngl.png",
+          "image": "https://www.ngssl.mywire.org/ngl.png",
+          "description": "लछारसर (रतनगढ़, चूरू) में बेसहारा, वृद्ध और बीमार नंदी महाराज की सेवा के लिए समर्पित गौशाला।",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "नंदी गौशाला परिसर, ग्राम - लछारसर",
+            "addressLocality": "रतनगढ़",
+            "addressRegion": "राजस्थान",
+            "postalCode": "331802",
+            "addressCountry": "IN"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-9216626445",
+            "contactType": "customer service",
+            "email": "info@ngss.mywire.org"
+          },
+          "sameAs": [
+            "https://www.instagram.com/nandi_goshala/",
+            "https://x.com/Nandi_Goshala",
+            "https://www.facebook.com/profile.php?id=61596008844708",
+            "https://www.youtube.com/@Nandi_Goshala",
+            "https://www.linkedin.com/in/nandi-goshala/",
+            "https://www.threads.com/@nandi_goshala"
+          ]
+        };
+        
+        schemaScript.textContent = JSON.stringify(schemaData);
+        document.head.appendChild(schemaScript);
+    }
+
+    // ==========================================
+    // 2. हेडर का डिज़ाइन लोड करना (.html लिंक्स के साथ)
+    // ==========================================
     const headerContainer = document.getElementById('header-container');
     
     if (headerContainer) {
@@ -28,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </a>
 
-                <!-- Desktop Menu -->
+                <!-- Desktop Menu (पुराने .html लिंक्स के साथ) -->
                 <nav class="hidden md:flex items-center gap-8 font-semibold text-white">
                     <a href="index.html" class="hover:text-gold transition">होम</a>
                     <a href="about.html" class="hover:text-gold transition">हमारे बारे में</a>
@@ -64,7 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
         </header>
         `;
 
-        // मोबाइल मेन्यू टॉगल (खोलने/बंद करने) का लॉजिक
+        // ==========================================
+        // 3. मोबाइल मेन्यू टॉगल (खोलने/बंद करने) का लॉजिक
+        // ==========================================
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
