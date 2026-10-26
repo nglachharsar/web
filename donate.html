@@ -4,30 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>दान करें - नंदी गौशाला लछारसर</title>
-    <meta name="description" content="नंदी गौशाला, लछारसर में दान करें। आपका दान बेसहारा नंदी महाराज की सेवा में काम आएगा।">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- jsPDF और html2canvas (रसीद बनाने के लिए) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body class="antialiased bg-main text-light">
 
-    <!-- ================= HEADER LOADER ================= -->
+    <!-- HEADER -->
     <div id="header-container"></div>
 
-    <!-- ================= MAIN CONTENT ================= -->
+    <!-- MAIN CONTENT -->
     <main class="max-w-5xl mx-auto px-4 py-16">
         
-        <!-- Page Title -->
         <div class="text-center mb-12">
             <span class="bg-white/10 border border-gold/30 text-gold px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider">सहयोग करें</span>
             <h1 class="text-4xl sm:text-5xl font-bold text-gold mt-4 mb-4">दान करें</h1>
@@ -35,12 +27,10 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-12 items-start">
-            
-            <!-- Left Column: QR Code & Payment Info -->
+            <!-- Left: QR Code -->
             <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg text-center sticky top-24">
                 <h2 class="text-2xl font-bold text-white mb-6 border-b border-gray-700 pb-3">ऑनलाइन दान</h2>
                 
-                <!-- Clickable QR Code -->
                 <a href="upi://pay?pa=9216626445@upi&pn=NANDI%20GO%20SEWA%20SANSTHAN%20LACHHARSAR&cu=INR" class="inline-block relative group cursor-pointer mb-4">
                     <img src="qrngl.jpeg" alt="Donation QR Code" class="w-64 h-64 mx-auto rounded-xl border-4 border-gray-700 shadow-md group-hover:scale-105 transition duration-300" onerror="this.src='ngl.png'">
                     <div class="absolute inset-0 bg-black/50 rounded-xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
@@ -57,25 +47,22 @@
                 </div>
             </div>
 
-            <!-- Right Column: Donation Form -->
+            <!-- Right: Form -->
             <div class="bg-card p-8 rounded-2xl border border-custom shadow-lg">
                 <h2 class="text-2xl font-bold text-white mb-6 border-b border-gray-700 pb-3">दान विवरण दर्ज करें</h2>
                 <p class="text-sm text-gray-400 mb-6">दान करने के बाद, कृपया नीचे अपनी जानकारी भरें ताकि हम आपको एक डिजिटल रसीद (PDF) दे सकें।</p>
 
                 <form id="donationForm" class="space-y-5">
-                    <!-- Name -->
                     <div>
                         <label class="block text-sm font-bold text-gray-300 mb-2">आपका पूरा नाम *</label>
                         <input type="text" id="donorName" required placeholder="जैसे: राहुल शर्मा" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold transition">
                     </div>
                     
-                    <!-- Amount -->
                     <div>
                         <label class="block text-sm font-bold text-gray-300 mb-2">दान राशि (₹) *</label>
                         <input type="number" id="donationAmount" required min="1" placeholder="जैसे: 501" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold transition">
                     </div>
                     
-                    <!-- Message -->
                     <div>
                         <label class="block text-sm font-bold text-gray-300 mb-2">संदेश / संकल्प (वैकल्पिक)</label>
                         <textarea id="donationMessage" rows="3" placeholder="जैसे: मेरे पिताजी की स्मृति में..." class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 text-white focus:outline-none focus:border-gold transition"></textarea>
@@ -91,38 +78,94 @@
         </div>
     </main>
 
-    <!-- ================= HIDDEN RECEIPT TEMPLATE (For PDF) ================= -->
-    <!-- यह बॉक्स स्क्रीन पर नहीं दिखता, सिर्फ PDF बनाने के काम आता है -->
-    <div id="receipt-template" class="hidden" style="width: 800px; padding: 40px; background: #fff; color: #000; font-family: sans-serif;">
-        <div style="text-align: center; border-bottom: 2px solid #2d6a4f; padding-bottom: 20px; margin-bottom: 20px;">
-            <h1 style="color: #2d6a4f; margin: 0; font-size: 28px;">नंदी गौशाला, लछारसर</h1>
-            <p style="margin: 5px 0; color: #555; font-size: 16px;">रतनगढ़, चूरू (राजस्थान)</p>
-            <h2 style="color: #ea580c; margin-top: 15px; font-size: 22px;">दान प्रमाण पत्र / Donation Receipt</h2>
-        </div>
+    <!-- ================= HIDDEN RECEIPT TEMPLATE (प्रीमियम डिज़ाइन) ================= -->
+    <div id="receipt-template" class="hidden" style="width: 800px; padding: 0; background: #fff; color: #333; font-family: 'Noto Sans Devanagari', sans-serif; border: 1px solid #e5e7eb;">
         
-        <div style="margin-bottom: 30px; font-size: 18px; line-height: 1.8;">
-            <p><strong>दानकर्ता का नाम:</strong> <span id="receipt-name"></span></p>
-            <p><strong>दान राशि:</strong> ₹ <span id="receipt-amount"></span></p>
-            <p><strong>दान का संदेश:</strong> <span id="receipt-message"></span></p>
-            <p><strong>दिनांक:</strong> <span id="receipt-date"></span></p>
+        <!-- Receipt Header -->
+        <div style="background-color: #1e293b; padding: 30px 40px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <!-- Logo placeholder, PDF me image load ho sakti hai agar direct base64 dein, par abhi text use kar rahe hain -->
+                <div style="background: #fff; padding: 5px; border-radius: 50%;">
+                    <img src="ngl.png" style="height: 60px; width: 60px; border-radius: 50%;" crossorigin="anonymous">
+                </div>
+                <div>
+                    <h1 style="color: #f59e0b; margin: 0; font-size: 28px; font-weight: bold;">नंदी गौशाला, लछारसर</h1>
+                    <p style="color: #cbd5e1; margin: 5px 0 0 0; font-size: 14px;">रतनगढ़, चूरू (राजस्थान)</p>
+                </div>
+            </div>
+            <div style="text-align: right;">
+                <h2 style="color: #fff; margin: 0; font-size: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Donation Receipt</h2>
+                <p style="color: #f59e0b; margin: 5px 0 0 0; font-size: 14px; font-weight: bold;">दान प्रमाण पत्र</p>
+            </div>
         </div>
-        
-        <div style="border-top: 1px dashed #ccc; padding-top: 20px; text-align: center; color: #777; font-size: 14px;">
-            <p>यह रसीद आपके द्वारा किए गए दान की डिजिटल पुष्टि है।</p>
-            <p style="margin-top: 5px;">गौ सेवा ही परमो धर्मः 🙏</p>
+
+        <!-- Receipt Body -->
+        <div style="padding: 40px;">
+            
+            <!-- Receipt No & Date -->
+            <div style="display: flex; justify-content: space-between; margin-bottom: 30px; border-bottom: 1px solid #e5e7eb; padding-bottom: 15px;">
+                <div>
+                    <p style="margin: 0; color: #6b7280; font-size: 12px; font-weight: bold;">RECEIPT NO.</p>
+                    <p style="margin: 5px 0 0 0; font-size: 16px; font-weight: bold;" id="receipt-no"></p>
+                </div>
+                <div style="text-align: right;">
+                    <p style="margin: 0; color: #6b7280; font-size: 12px; font-weight: bold;">DATE & TIME</p>
+                    <p style="margin: 5px 0 0 0; font-size: 16px; font-weight: bold;" id="receipt-date"></p>
+                </div>
+            </div>
+
+            <!-- Donor Info Table -->
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
+                <tr>
+                    <td style="width: 40%; padding: 12px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">दानकर्ता का नाम:</td>
+                    <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb; font-size: 18px; font-weight: bold; color: #111827;" id="receipt-name"></td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">दान राशि:</td>
+                    <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb; font-size: 20px; font-weight: bold; color: #059669;">₹ <span id="receipt-amount"></span></td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 14px;">भुगतान का माध्यम:</td>
+                    <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb; font-size: 16px; color: #111827;">UPI (9216626445@upi)</td>
+                </tr>
+                <tr>
+                    <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb; color: #6b7280; font-size: 14px; vertical-align: top;">संदेश / संकल्प:</td>
+                    <td style="padding: 12px 0; border-bottom: 1px solid #e5e7eb; font-size: 16px; color: #111827; font-style: italic;" id="receipt-message"></td>
+                </tr>
+            </table>
+
+            <!-- Thank You Note & Stamp -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px;">
+                <div style="width: 60%;">
+                    <p style="font-size: 14px; color: #4b5563; line-height: 1.6; margin: 0;">
+                        आपके इस बहुमूल्य योगदान के लिए हम हृदय से आभार व्यक्त करते हैं। आपका यह दान बेसहारा नंदी महाराज के भोजन, चिकित्सा और देखभाल में उपयोग किया जाएगा।
+                    </p>
+                    <p style="font-size: 16px; font-weight: bold; color: #ea580c; margin-top: 15px;">गौ सेवा ही परमो धर्मः 🙏</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="border: 3px solid #059669; color: #059669; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 20px; transform: rotate(-10deg); opacity: 0.7;">
+                        PAID / प्राप्त
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Receipt Footer -->
+        <div style="background-color: #f3f4f6; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
+            <p style="margin: 0; color: #4b5563; font-size: 12px; font-weight: bold;">NANDI GO SEWA SANSTHAN LACHHARSAR</p>
+            <p style="margin: 5px 0 0 0; color: #6b7280; font-size: 12px;">लछारसर, रतनगढ़, चूरू (राजस्थान) - 331802 | फोन: +91 92166 26445</p>
+            <p style="margin: 5px 0 0 0; color: #6b7280; font-size: 12px;">Email: info@ngss.mywire.org | Web: www.ngssl.mywire.org</p>
         </div>
     </div>
 
-    <!-- ================= FOOTER LOADER ================= -->
+    <!-- FOOTER -->
     <div id="footer-container"></div>
 
-    <!-- ================= SCRIPTS ================= -->
-    <!-- Firebase SDKs -->
+    <!-- SCRIPTS -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
     
-    <!-- Custom Scripts -->
     <script src="firebase-config.js"></script>
     <script src="donate.js"></script>
     <script src="header.js"></script>
