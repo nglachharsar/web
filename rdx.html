@@ -2,58 +2,41 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="ngl.svg">
-    <link rel="apple-touch-icon" href="ngl.png">
-    <meta name="theme-color" content="#f59e0b">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="author" content="Nandi Go Sewa Sansthan Lachharsar">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph (WhatsApp / Facebook Preview) -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="नंदी गौशाला, लछारसर">
-    <meta property="og:image" content="https://www.ngssl.mywire.org/ngl.png">
-    <meta property="og:locale" content="hi_IN">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@Nandi_Goshala">
-    <meta name="twitter:image" content="https://www.ngssl.mywire.org/ngl.png">
     <title>एडमिन पैनल - नंदी गौशाला लछारसर</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Favicon & SEO -->
+    <link rel="icon" type="image/svg+xml" href="ngl.svg">
+    <meta name="robots" content="noindex, nofollow"> <!-- एडमिन पैनल को गूगल से छिपाना -->
     
-    <!-- Font Awesome -->
+    <!-- Tailwind CSS & Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* एडमिन पैनल की अपनी लाइट थीम */
         body { 
             background-color: #f1f5f9; 
-            font-family: 'Poppins', sans-serif; 
-            color: #1e293b;
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif; 
+            color: #1e293b; 
         }
         .glass-panel { 
             background: rgba(255, 255, 255, 0.95); 
             backdrop-filter: blur(10px); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
         }
     </style>
 </head>
 <body class="p-4 md:p-8 min-h-screen flex items-center justify-center">
 
-    <!-- मुख्य कंटेनर -->
+    <!-- Main Container -->
     <div class="max-w-5xl w-full glass-panel rounded-2xl overflow-hidden border border-gray-200">
         
-        <!-- हेडर -->
+        <!-- Header -->
         <div class="bg-gradient-to-r from-orange-600 to-amber-500 p-6 text-white text-center relative">
             <h1 class="text-3xl font-bold"><i class="fas fa-shield-alt mr-2"></i> एडमिन पैनल</h1>
             <p class="text-orange-100 mt-2 font-medium">नंदी गौशाला, लछारसर</p>
-            <a href="index.html" class="absolute top-6 right-6 text-sm bg-white/20 hover:bg-white/30 px-3 py-1 rounded-lg transition">
+            <a href="index.html" class="absolute top-6 right-6 text-sm bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-lg transition hidden sm:block">
                 <i class="fas fa-external-link-alt"></i> वेबसाइट देखें
             </a>
         </div>
@@ -69,15 +52,14 @@
                 <button id="loginBtn" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-blue-700 transition shadow-lg flex items-center justify-center gap-3 mx-auto">
                     <i class="fab fa-google"></i> Google से लॉगिन करें
                 </button>
-                
                 <p id="login-msg" class="text-red-500 mt-4 text-sm font-bold"></p>
             </div>
 
             <!-- ================= एडमिन पैनल (लॉगिन के बाद) ================= -->
             <div id="admin-section" class="hidden">
                 
-                <!-- यूजर इन्फो और लॉगआउट -->
-                <div class="flex justify-between items-center bg-gray-50 p-4 rounded-xl mb-8 border border-gray-200">
+                <!-- User Info Bar -->
+                <div class="flex justify-between items-center bg-gray-50 p-4 rounded-xl mb-8 border border-gray-200 shadow-sm">
                     <div class="flex items-center gap-3 text-gray-700 font-medium">
                         <i class="fas fa-check-circle text-green-500 text-xl"></i>
                         <span id="user-email"></span>
@@ -87,51 +69,79 @@
                     </button>
                 </div>
 
-                <!-- टैब्स (कंटेंट और दान लिस्ट) -->
-                <div class="flex border-b border-gray-200 mb-8">
-                    <button id="tab-content" class="px-6 py-3 font-bold text-orange-600 border-b-2 border-orange-600 transition">
-                        <i class="fas fa-edit"></i> वेबसाइट कंटेंट
+                <!-- 3 Tabs -->
+                <div class="flex flex-wrap border-b border-gray-200 mb-8 gap-2">
+                    <button id="tab-content" class="px-6 py-3 font-bold text-orange-600 border-b-2 border-orange-600 transition bg-orange-50 rounded-t-lg">
+                        <i class="fas fa-edit"></i> कंटेंट
                     </button>
                     <button id="tab-donations" class="px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition">
-                        <i class="fas fa-hand-holding-usd"></i> दान की लिस्ट
+                        <i class="fas fa-hand-holding-usd"></i> दान लिस्ट
+                    </button>
+                    <button id="tab-messages" class="px-6 py-3 font-bold text-gray-500 hover:text-gray-800 transition">
+                        <i class="fas fa-envelope"></i> संपर्क संदेश
                     </button>
                 </div>
 
-                <!-- टैब 1: कंटेंट फॉर्म -->
+                <!-- ================= टैब 1: कंटेंट ================= -->
                 <div id="content-tab">
                     <form id="adminForm" class="space-y-6">
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2">नोटिस (होम पेज पर पॉपअप में दिखेगा)</label>
-                            <textarea id="noticeInput" rows="3" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-orange-500 outline-none transition" placeholder="जैसे: कल गौशाला में विशेष पूजा होगी..."></textarea>
-                            <p class="text-xs text-gray-500 mt-1">आप यहाँ HTML टैग्स (जैसे &lt;b&gt;, &lt;br&gt;) का भी उपयोग कर सकते हैं।</p>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4 rounded-r-lg">
+                            <p class="text-blue-800 text-sm font-medium">
+                                <i class="fas fa-info-circle mr-2"></i> <strong>ध्यान दें:</strong> नोटिस बॉक्स में आप <strong>पूरा HTML कोड</strong> (जैसे &lt;img&gt;, &lt;div&gt;, &lt;h1&gt;, &lt;a&gt; आदि) डाल सकते हैं। यह वेबसाइट पर पॉपअप में दिखेगा।
+                            </p>
                         </div>
                         
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2">गौशाला समाचार (होम पेज के बीच में दिखेगा)</label>
-                            <textarea id="contentInput" rows="6" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-orange-500 outline-none transition" placeholder="यहाँ खबरें या जानकारी लिखें..."></textarea>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">नोटिस (कस्टम HTML पॉपअप)</label>
+                            <textarea id="noticeInput" rows="5" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-orange-500 outline-none transition font-mono text-sm" placeholder="<h2>जय गौ माता</h2><p>कल पूजा है...</p>"></textarea>
                         </div>
                         
-                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold text-lg hover:bg-green-700 transition shadow-md">
-                            <i class="fas fa-paper-plane mr-2"></i> वेबसाइट पर पब्लिश करें
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">समाचार (होम पेज के बीच में दिखेगा)</label>
+                            <textarea id="contentInput" rows="8" class="w-full bg-gray-50 border border-gray-300 rounded-xl p-4 focus:ring-2 focus:ring-orange-500 outline-none transition font-mono text-sm" placeholder="यहाँ खबरें लिखें..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-xl font-bold text-lg hover:bg-green-700 transition shadow-md flex justify-center items-center gap-2">
+                            <i class="fas fa-paper-plane"></i> वेबसाइट पर पब्लिश करें
                         </button>
                         <p id="save-msg" class="text-center font-bold"></p>
                     </form>
                 </div>
 
-                <!-- टैब 2: दान की लिस्ट -->
+                <!-- ================= टैब 2: दान लिस्ट ================= -->
                 <div id="donations-tab" class="hidden">
-                    <div class="overflow-x-auto rounded-xl border border-gray-200">
+                    <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
                         <table class="w-full text-left border-collapse">
                             <thead class="bg-gray-100 text-gray-700 font-bold">
                                 <tr>
                                     <th class="p-4 border-b">दिनांक</th>
-                                    <th class="p-4 border-b">दानकर्ता का नाम</th>
+                                    <th class="p-4 border-b">दानकर्ता</th>
                                     <th class="p-4 border-b">राशि (₹)</th>
                                     <th class="p-4 border-b">संदेश</th>
+                                    <th class="p-4 border-b text-center">एक्शन</th> <!-- डिलीट बटन के लिए नया कॉलम -->
                                 </tr>
                             </thead>
                             <tbody id="donations-list" class="text-gray-600">
-                                <!-- डेटा यहाँ लोड होगा -->
+                                <!-- JS will load here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- ================= टैब 3: संपर्क संदेश ================= -->
+                <div id="messages-tab" class="hidden">
+                    <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-gray-100 text-gray-700 font-bold">
+                                <tr>
+                                    <th class="p-4 border-b">दिनांक</th>
+                                    <th class="p-4 border-b">प्रेषक (नाम/फोन)</th>
+                                    <th class="p-4 border-b">संदेश</th>
+                                    <th class="p-4 border-b text-center">एक्शन</th> <!-- डिलीट बटन के लिए नया कॉलम -->
+                                </tr>
+                            </thead>
+                            <tbody id="messages-list" class="text-gray-600">
+                                <!-- JS will load here -->
                             </tbody>
                         </table>
                     </div>
@@ -141,13 +151,11 @@
         </div>
     </div>
 
-    <!-- ================= SCRIPTS ================= -->
-    <!-- Firebase SDKs -->
+    <!-- ================= Scripts ================= -->
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
     
-    <!-- Custom Scripts -->
     <script src="firebase-config.js"></script>
     <script src="admin.js"></script>
 </body>
