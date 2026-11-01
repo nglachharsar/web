@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (footerContainer) {
         footerContainer.innerHTML = `
-        <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800 mt-12">
+        <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-800 mt-12 relative overflow-hidden">
+            
             <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8">
                 
                 <!-- Column 1: About -->
@@ -84,10 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
 
-            <!-- Copyright -->
-            <div class="text-center mt-10 pt-6 border-t border-gray-800 text-sm">
-                <p class="mb-2">© <span id="year"></span> नंदी गौशाला, लछारसर — सर्वाधिकार सुरक्षित</p>
-                <p class="text-xs text-gray-500">Designed with ❤️ for Gau Seva</p>
+            <!-- Developed By RDX Button & Copyright -->
+            <div class="text-center mt-12 pt-8 border-t border-gray-800 flex flex-col items-center justify-center gap-4">
+                <p class="text-sm text-gray-500">© <span id="year"></span> नंदी गौशाला, लछारसर — सर्वाधिकार सुरक्षित</p>
+                
+                <!-- Developed by RDX Button -->
+                <a href="https://rdx.is-a.dev/" target="_blank" class="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gold text-gray-300 hover:text-gold px-5 py-2 rounded-full transition duration-300 shadow-md group">
+                    <span class="text-sm">Developed with <i class="fas fa-heart text-red-500 group-hover:animate-pulse"></i> by</span>
+                    <span class="font-bold tracking-wider text-white group-hover:text-gold">RDX</span>
+                </a>
             </div>
         </footer>
         `;
